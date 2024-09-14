@@ -18,9 +18,9 @@ i. a brief description of the project
 
 ii. the algorithm / library / methods that you want to use
 
-iii. the data that you will need
+iii. any data that you might need
 
-iv. the expected outcome. 
+iv. the expected outcome 
 
 The whole description should not be more than 400 words.
 
