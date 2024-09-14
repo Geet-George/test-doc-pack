@@ -4,7 +4,7 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
-    - file: content/overview.md
+    - file: content/projects.md
       sections:
       - file: content/text_and_code.ipynb
     - file: references.md
