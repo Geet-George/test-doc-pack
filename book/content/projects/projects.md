@@ -1,6 +1,6 @@
 # Projects 
 
-Each student designs their own project. You "propose" the project. The teaching staff will go through these projects and will give feedback on the feasibility and suggest any modifications. 
+Each student designs their own project. You "propose" the project. The teaching staff will go through these projects and will give feedback on the feasibility and suggest any modifications. You can look at [some project themes here](themes.md) to get ideas for the types of projects you can do, but don't feel restricted to them.
 
 The primary objective of your project is to be able to use version control and package the source code with standard practices in software of testing and documentation. The subject matter of the code is secondary (but not unimportant!). Put simply, the code itself should be functioning, even if the content is not perfect. 
 
