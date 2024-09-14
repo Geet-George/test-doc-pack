@@ -1,10 +1,4 @@
-# Projects 
-
-Each student designs their own project. You "propose" the project with a brief description of the project, the algorithm / library / methods that you want to use, the data that you will need, and the expected outcome. The whole description should not be more than 400 words. The teaching staff will go through these projects and will give feedback on the feasibility and suggest any modifications. 
-
-The primary objective of your project is to be able to use version control and package the source code with standard practices in software of testing and documentation. The subject matter of the code is secondary (but not unimportant!). Put simply, the code itself should be functioning, even if the content is not perfect. 
-
-For example, if your project aims to predict the weather using a simple linear regression model on temperature, pressure, humidity and winds, you should be able to provide source code that can be run by anyone, and the source code should be well-documented and tested. How well the model can actually predict the weather becomes secondary.
+# Project Themes
 
 Following are some themes you can use as inspiration for projects, but you do not have to necessarily stick to them. The themes are divided into two categories: "Simple" and "Advanced". The "Simple" themes are easier to implement and are more suitable for students who are new to programming. The "Advanced" themes are more challenging and might be suitable for students who have some experience in programming. But the classification is arbitrary, and one's "advanced" might be another's "simple" or the other way around!
 
