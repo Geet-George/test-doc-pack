@@ -40,14 +40,16 @@ git --version
 
 2. If you don't have git installed, you can download it from the [official website](https://git-scm.com/downloads). Check if your installation worked by running the commands in Step-1.
 
-## Useful Git commands
+### Useful Git commands
 
-### `git status`
+For now, we will only pick up a few basic commands to get started with things. As the course progresses, we will go into the details of what these commands do in the background.
 
-### `git clone`
+#### `git clone`
 
-### `git add`
+#### `git status`
 
-### `git commit`
+#### `git add`
 
-### `git push`
+#### `git commit`
+
+#### `git push`
