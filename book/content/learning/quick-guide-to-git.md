@@ -20,11 +20,16 @@ So, let's get Git going on our computer then...
 
 `````{tab-set}
 ````{tab-item} Windows
-*instructions here for Windows*
+Open Command Prompt and run the following command:
+    
+```bash
+git --version
+```
+
 ````
 
 ````{tab-item} MacOS / Linux
-Open a terminal and run the following command:
+Open Terminal and run the following command:
 
 ```bash
 git --version
