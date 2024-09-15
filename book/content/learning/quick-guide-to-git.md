@@ -6,20 +6,20 @@
 
 1. Check if you already have git installed on your machine by running the following command:
 
-````{tab-set}
-```{tab-item} Windows
+`````{tab-set}
+````{tab-item} Windows
 *instructions here for Windows*
-```
+````
 
-```{tab-item} MacOS / Linux
+````{tab-item} MacOS / Linux
 Open a terminal and run the following command:
 
 ```bash
 git --version
 ```
 
-```
 ````
+`````
 
 2. If you don't have git installed, you can download it from the [official website](https://git-scm.com/downloads).
 
