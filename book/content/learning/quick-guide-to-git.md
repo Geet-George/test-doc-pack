@@ -38,7 +38,7 @@ git --version
 ````
 `````
 
-2. If you don't have git installed, you can download it from the [official website](https://git-scm.com/downloads).
+2. If you don't have git installed, you can download it from the [official website](https://git-scm.com/downloads). Check if your installation worked by running the commands in Step-1.
 
 ## Useful Git commands
 
