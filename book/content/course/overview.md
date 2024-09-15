@@ -20,4 +20,4 @@ This part is like putting the cake in a box. You have a nice cake (your code), b
 
 ## Projects
 
-So, what are we going to do with these software concepts? You will have projects of your own to implement them on and by the end of the course, you will have a functioning Python package! On the way, we will also learn about some practicalities like managing environments, about hosting documentation, about collaborating with Gitlab and so on. You will find more details about projects [here](../projects/projects.md). 
+So, what are we going to do with these software concepts? You will have projects of your own to implement them on and by the end of the course, you will have a functioning Python package! On the way, we will also learn about some practicalities like managing environments, about hosting documentation, about collaborating with Gitlab and so on. You will find more details about projects [here](projects/projects.md). 
