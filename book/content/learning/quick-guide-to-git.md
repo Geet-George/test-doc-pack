@@ -52,7 +52,21 @@ For now, we will only pick up a few basic commands to get started with things. A
 git clone git@gitlab.tudelft.nl:geetgeorge/aesb2122.git
 ```
 
-This clones the gitlab directory `aesb2122` in whatever directory you use this command. The above example is only possible with an SSH key which identifies you to the server without having to log in. Alternatively you can use HTTP:
+This clones the gitlab directory `aesb2122` in whatever directory you use this command. The above example is only possible with an SSH key which identifies you to the server without having to log in. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), which also applicable for Gitlab. A short summary of the commands you need to perform is shown below.
+
+```bash
+ssh-keygen -t ed25519 -C "your-github-email@example.com"
+```
+
+Next, you need to copy your public key (the file should have the extension “.pub”) over to your Gitlab account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents (e.g. on a Mac OS system) as follows:
+
+```bash
+cat /Users/<YOUR_USERNAME>/.ssh/id_ed25519.pub
+```
+
+Copy the line of output that starts with “ssh-ed25519” and ends with your email address. Finally, go to your `Gitlab profile -> SSH Keys -> Add new key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name, then click the `Add key` button.
+
+Alternatively, you can clone the gitlab directory with HTTP:
 
 ```bash
 git clone https://gitlab.tudelft.nl/geetgeorge/aesb2122.git
