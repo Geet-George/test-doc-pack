@@ -10,6 +10,7 @@ only_build_toc_files: true
 html:
   favicon : "figures/favicon.ico"
   baseurl :  "https://geet-george.github.io/test-doc-pack/" #Replace this with your own URL
+  home_page_in_navbar: true
 
 sphinx:
   config:
