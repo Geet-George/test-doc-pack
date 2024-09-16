@@ -1,5 +1,5 @@
 (intro)=
-# AESB2122 - Python Programming
+# AESB2122 - Introduction
 
 Welcome to the Python part of AESB2122 Signals and Systems with Python! 
 

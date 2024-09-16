@@ -4,6 +4,7 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
+    - file: intro.md
     - file: content/course/overview.md
       sections:
       - file: content/course/projects/projects.md
