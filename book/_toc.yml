@@ -4,8 +4,9 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
-    - file: content/projects/projects.md
+    - file: content/course/overview.md
       sections:
-      - file: content/projects/themes.md
+      - file: content/course/projects/projects.md
+      - file: content/course/projects/themes.md
     - file: content/learning/quick-guide-to-git.md
     - file: references.md
