@@ -12,7 +12,7 @@ For your project, you will be working on your own project in Gitlab (hosted by T
 
 **The deadline for submitting your proposal is 19th September, 10:00 CEST.**
 
-In [Gitlab hosted by TU Delft](https://gitlab.tudelft.nl/) you should be able to login with your NetID. Create a new (blank) project on Gitlab. Give it an appropriate name. You can set any visibility level, however if you choose "Private", you must add the instructor and all TAs as members in the project. Initialize the repository with a README, and in this `README.md`, you will write down 
+In [Gitlab hosted by TU Delft](https://gitlab.tudelft.nl/) you should be able to login with your NetID. Create a new (blank) project on Gitlab. Give it an appropriate name. This name should reflect what your code does or what your project is about, not with your name or words such as `assignment` or `proposal` in the name. [Points 1-6 in this article](https://sd.blackball.lv/en/articles/read/18956) will help you with naming. For your project, you can set any visibility level, however if you choose "Private", you must add the instructor and all TAs as members in the project. Initialize the repository with a README, and in this `README.md`, you will write down 
 
 i. a brief description of the project
 
