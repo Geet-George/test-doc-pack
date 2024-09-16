@@ -54,6 +54,8 @@ git clone git@gitlab.tudelft.nl:geetgeorge/aesb2122.git
 
 This clones the gitlab directory `aesb2122` in whatever directory you use this command. The above example is only possible with an SSH key which identifies you to the server without having to log in. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), which also applicable for Gitlab. A short summary of the commands you need to perform is shown below.
 
+To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
+
 ```bash
 ssh-keygen -t ed25519 -C "your-github-email@example.com"
 ```
