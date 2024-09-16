@@ -57,7 +57,7 @@ This clones the gitlab directory `aesb2122` in whatever directory you use this c
 To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
 
 ```bash
-ssh-keygen -t ed25519 -C "your-github-email@example.com"
+ssh-keygen -t ed25519 -C "your-gitlab-email@example.com"
 ```
 
 Next, you need to copy your public key (the file should have the extension “.pub”) over to your Gitlab account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents (e.g. on a Mac OS system) as follows:
