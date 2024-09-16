@@ -24,6 +24,6 @@ iv. the expected outcome
 
 The whole description should not be more than 400 words.
 
-To complete the aforementioned tasks, you will need to first understand a few small things about `git`. Think of this as a small exercise to build up your git basics, which you will find very useful in the course and much much beyond. You'll find a [quick guide to using git here](../learning/quick-guide-to-git.md), including cloning your repository from Gitlab to your computer locally and then committing your changes.
+To complete the aforementioned tasks, you will need to first understand a few small things about `git`. Think of this as a small exercise to build up your git basics, which you will find very useful in the course and much much beyond. You'll find a [quick guide to using git here](../../learning/quick-guide-to-git.md), including cloning your repository from Gitlab to your computer locally and then committing your changes.
 
 Commit the additions in the `README` to your project, after which the teaching team will be able to view it and provide you with feedback. 
