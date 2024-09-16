@@ -10,3 +10,4 @@ parts:
       - file: content/course/projects/themes.md
     - file: content/learning/quick-guide-to-git.md
     - file: references.md
+    - file: contributing.md
