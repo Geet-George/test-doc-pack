@@ -7,4 +7,5 @@ parts:
     - file: content/projects/projects.md
       sections:
       - file: content/projects/themes.md
+    - file: content/learning/quick-guide-to-git.md
     - file: references.md
