@@ -6,7 +6,7 @@ The standard way of asking questions, reporting bugs or requesting features is t
 ![alt text](../../figures/github_issues.png)
 
 
-To open a new issue, simply clickl the green `New issue` button, which will open the following screen
+To open a new issue, simply click the green `New issue` button, which will open the following screen
 
 ![alt text](../../figures/github_raise_issue.png)
 
