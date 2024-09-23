@@ -32,6 +32,12 @@ The bigger idea behind the course is to learn how to implement programming conce
 
 7. **Too flexible**: If your project tries to implement too many methods or if it provides too many choices, this might make it more difficult to finish in time as well as to keep all the moving parts running. You may try more flexibility in your project after the course. For the course, please keep it minimal. 
 
+## Feedback and Support
+
+The teaching team will provide feedback on your project proposal. This feedback will be given in the form of issues on your Github repository titled something like “Proposal Feedback”. You are expected to address these issues and make the necessary changes to your project proposal. 
+
+Further communication about your project should also continue over the Github repository. If you have any questions or need help, you can create an issue on your repository and tag the instructor and TAs. 
+
 ## Proposal Requirements and Deadline
 
 **The deadline for submitting your proposal is 19th September, 10:00 CEST.**
