@@ -12,7 +12,9 @@ For your project, you will be working on your own project in Gitlab (hosted by T
 
 The bigger idea behind the course is to learn how to implement programming concepts to a software project. For the timeframe that we have, it is important to keep the project simple and focused. Here are some guidelines to help you design your project:
 
-1. **Python and libraries**: The project should be written in Python. You can use any version of Python, but it is recommended to use Python 3.6 or higher. Please do not use niche libraries that are not commonly used. If you are unsure, ask the teaching staff. 
+1. **Name and student number**: Add your name and student number in the README of your project, immediately after the title.
+
+2. **Python and libraries**: The project should be written in Python. You can use any version of Python, but it is recommended to use Python 3.6 or higher. Please do not use niche libraries that are not commonly used. If you are unsure, ask the teaching staff. 
 
 2. **Feasibility**: The project should be feasible to complete within the time frame of the course. This is why the project should not take on tasks which require any of the following:
 
