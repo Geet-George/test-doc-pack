@@ -36,7 +36,7 @@ The bigger idea behind the course is to learn how to implement programming conce
 
 ## Feedback and Support
 
-The teaching team will provide feedback on your project proposal. This feedback will be given in the form of issues on your Github repository titled something like “Proposal Feedback”. You are expected to address these issues and make the necessary changes to your project proposal. 
+The teaching team will provide feedback on your project proposal. This feedback will be given in the form of issues on your Github repository titled something like “Proposal Feedback”. The feedback in these Github issues will often refer you back to [the project guidelines and requirements](#project-requirements--guidelines) mentioned on this page. You are expected to address these issues and make the necessary changes to your project. 
 
 Further communication about your project should also continue over the Github repository. If you have any questions or need help, you can create an issue on your repository. You'll find the instructions on [raising an issue here](../../learning/guide-to-raising-issues.md). Follow the template provided there and tag the instructor and TAs.
 
