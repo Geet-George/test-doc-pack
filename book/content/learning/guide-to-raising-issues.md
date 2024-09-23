@@ -12,7 +12,7 @@ To open a new issue, simply clickl the green `New issue` button, which will open
 
 Here you can give the issue a title and write a description. These descriptions are often standardized across a repository. We will stick to a standarized issue template of our own.
 
-To ask a question you can open a new issue and copy/fill in the issue template below. Copy the raw markdown text rather than copy pasting the rendered text. Before you submit a new issue, you may preview the description using the `Preview` button to check whether pictures, links etc. have rendered properly. Also, make sure to assign the relevant people on your new issue, else it may lie dorment in perpetuity! 
+To ask a question you can open a new issue and copy/fill in the issue template below. Copy the raw markdown text rather than copy pasting the rendered text. Before you submit a new issue, you may preview the description using the `Preview` button to check whether pictures, links etc. have rendered properly. Also, make sure to assign the relevant people (for our course, tag at least someone of the teaching team) on your new issue, else it may lie dormant in perpetuity! 
 
 # Template
 
