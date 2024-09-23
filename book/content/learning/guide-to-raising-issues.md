@@ -1,5 +1,9 @@
 # How to raise an issue
 
+:::warning
+For support on your project, you must raise an issue on YOUR OWN project's repository, not on the course repository as shown in the example screenshots.
+:::
+
 The standard way of asking questions, reporting bugs or requesting features is to raise an issue on the relevant repository. You can raise issues at the `Issues` tab in the upper bar of any repository 
 
 
