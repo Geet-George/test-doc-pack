@@ -14,8 +14,9 @@ Here you can give the issue a title and write a description. These descriptions 
 
 To ask a question you can open a new issue and copy/fill in the issue template below. Copy the raw markdown text rather than copy pasting the rendered text. Before you submit a new issue, you may preview the description using the `Preview` button to check whether pictures, links etc. have rendered properly. Also, make sure to assign the relevant people (for our course, tag at least someone of the teaching team) on your new issue, else it may lie dormant in perpetuity! 
 
-# Template
 
+# Template
+```
 ### 1. Issue Description
 
 A clear and concise description of what the issue is.
@@ -61,4 +62,4 @@ Add any other context or information about the issue or feature request here.
 - [ ] I have assigned a reviewer.
 - [ ] I have searched the interwebs for this question.
 - [ ] I have provided sufficient information above to investigate.
-
+```
