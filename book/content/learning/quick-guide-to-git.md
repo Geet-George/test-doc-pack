@@ -61,29 +61,45 @@ For now, we will only pick up a few basic commands to get started with things. A
 `git clone` creates a local copy of an existing project stored in a remote Git repository (like Gitlab or Github). Here Local refers to things stored on your computer, and remote refers to some server. `git clone` is the first step when collaborating on an existing project. For example:
 
 ```bash
-git clone git@gitlab.tudelft.nl:geetgeorge/aesb2122.git
+git clone git@github.com:<your-Github-user-name>/<your-repository-name>.git
 ```
 
-This clones the gitlab directory `aesb2122` in whatever directory you use this command. The above example is only possible with an SSH key which identifies you to the server without having to log in. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), which also applicable for Gitlab. A short summary of the commands you need to perform is shown below.
+This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. The above example is only possible with an SSH key which identifies you to the server without having to log in. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). A short summary of the commands you need to perform is shown below.
 
 To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
 
 ```bash
-ssh-keygen -t ed25519 -C "your-gitlab-email@example.com"
+ssh-keygen -t ed25519 -C "your-email@example.com"
 ```
 
-Next, you need to copy your public key (the file should have the extension “.pub”) over to your Gitlab account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents (e.g. on a Mac OS system) as follows:
+Next, you need to copy your public key (the file should have the extension “.pub”) over to your Github account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents as follows:
+
+`````{tab-set}
+````{tab-item} Windows
+Open Command Prompt and run the following command:
+
+```bash
+type C:\Users\<YOUR_USERNAME>\.ssh\id_ed25519.pub
+```
+
+````
+
+````{tab-item} MacOS / Linux
+Open Terminal and run the following command:
 
 ```bash
 cat /Users/<YOUR_USERNAME>/.ssh/id_ed25519.pub
 ```
 
-Copy the line of output that starts with “ssh-ed25519” and ends with your email address. Finally, go to your `Gitlab profile -> SSH Keys -> Add new key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name, then click the `Add key` button.
+````
+`````
 
-Alternatively, you can clone the gitlab directory with HTTP:
+Copy the complete line of output that starts with “ssh-ed25519” and ends with your email address. Finally, go to `Github -> Your profile -> Settings -> SSH and GPG Keys -> New SSH key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name, then click the `Add SSH key` button.
+
+Alternatively, you can clone the Github repository with HTTP:
 
 ```bash
-git clone https://gitlab.tudelft.nl/geetgeorge/aesb2122.git
+git clone https://github.com/<your-Github-user-name>/<your-repository-name>.git
 ```
 
 But then you will have to log in and provide credentials for each communication with the remote server
