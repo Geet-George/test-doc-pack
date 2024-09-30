@@ -50,7 +50,7 @@ git config --global user.name <your-name>
 git config --global user.email <your-email-id>
 ```
 
-Replace `<your-name>` and `<your-email-id>` with your name and email address. This information will be used to identify you in the commit history.
+Replace `<your-name>` and `<your-email-id>` with your name and email address. This information will be used to identify you in the commit history. If you don't do this, Git will prompt you to do this when you try to commit changes.
 
 ### Useful Git commands
 
