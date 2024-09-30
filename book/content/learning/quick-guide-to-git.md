@@ -40,6 +40,18 @@ git --version
 
 2. If you don't have git installed, you can download it from the [official website](https://git-scm.com/downloads). Check if your installation worked by running the commands in Step-1.
 
+3. Once you have Git installed, you need to configure it. Run the following commands in your terminal / command prompt:
+
+```bash
+git config --global user.name <your-name>
+```
+    
+```bash
+git config --global user.email <your-email-id>
+```
+
+Replace `<your-name>` and `<your-email-id>` with your name and email address. This information will be used to identify you in the commit history.
+
 ### Useful Git commands
 
 For now, we will only pick up a few basic commands to get started with things. As the course progresses, we will go into the details of what these commands do in the background.
