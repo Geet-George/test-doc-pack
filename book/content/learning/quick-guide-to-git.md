@@ -64,7 +64,9 @@ For now, we will only pick up a few basic commands to get started with things. A
 git clone git@github.com:<your-Github-user-name>/<your-repository-name>.git
 ```
 
-This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. The above example is only possible with an SSH key which identifies you to the server without having to log in. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent). A short summary of the commands you need to perform is shown below.
+This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. 
+
+The above example is only possible with an SSH key which identifies you to the server without having to log in. For this, you have to do an authentication the first time and every time after that, Github knows your machine. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but a short summary of the commands you need to perform is shown below.
 
 To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
 
