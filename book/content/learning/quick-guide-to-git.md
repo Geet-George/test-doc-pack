@@ -81,14 +81,14 @@ But then you will have to log in and provide credentials for each communication 
 Having cloned a repository to local and navigated to that repository, `git status` shows you the current state of your project. It tells you which files have been changed, which are ready to be saved (staged), and which still need to be added. It’s a useful command to keep track of what’s going on before you make any further changes. For example, after cloning a repository, we navigate towards it using `cd` (change directory) and then we check the status
 
 ```bash
-cd aesb2122
+cd <your-repo-name>
 git status
 ```
 
 or add `-v` for a more verbose status
 
 ```bash
-cd aesb2122
+cd <your-repo-name>
 git status -v
 ```
 
