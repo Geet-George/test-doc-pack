@@ -12,5 +12,6 @@ parts:
     - file: content/learning/guide-to-raising-issues.md
     - file: content/learning/important-differences.md
     - file: content/learning/python-in-a-terminal.md
+    - file: content/learning/local-to-remote.md
     - file: references.md
     - file: contributing.md
