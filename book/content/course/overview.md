@@ -1,5 +1,9 @@
 # Course Overview
 
+```{note}
+For help with understanding [Files and Folders](https://teachbooks.github.io/files-and-folders/), there is a nice pilot module developed by the Data Literacy Project at TU Delft. It is a short, self-paced and independent learning course. You can find it [here](https://teachbooks.github.io/files-and-folders/). It is short with some exercises and quizzes to help you understand the basics of files and folders. And although not all aspects of the module might be relevant to this course, I highly recommend you to go through it.
+```
+
 Most of you have completed a course introducing programming and Python in Q2 of your first year and this will be the second course where you are taught computer programming. Therefore, this course will not be an introductory one (which it was last year), but an intermediate one. Here, beyond coding in Python you will also learn how to make your code usable for others. You will apply standard software practices to your code and develop your project similar to how things are expected to be done in the software world. This might sound like a lot to learn, but it boils down to 4 simple concepts:
 
 #### (a) Testing 
