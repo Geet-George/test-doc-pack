@@ -8,7 +8,7 @@ This course is designed to teach you to enhance your Python code with standard s
 
 ## Recommended path to follow
 
-It is recommended to follow the learning concepts in the order presented here. This will help you build on the concepts slowly and progress through the course.
+It is recommended to follow the learning concepts in the order presented here and in the navigation sidebar. This will help you build on the concepts slowly and progress through the course.
 
 1. The first step is to get somewhat comfortable with the terminal. You can do this by following the steps in the [Python in a terminal](python-in-a-terminal.md) section. Here you will learn how to run Python code in a terminal, as opposed to using Jupyter notebooks.
 
