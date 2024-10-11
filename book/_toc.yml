@@ -15,5 +15,4 @@ parts:
       - file: content/learning/quick-guide-to-git.md
       - file: content/learning/local-to-remote.md
       - file: content/learning/guide-to-raising-issues.md
-    - file: references.md
     - file: contributing.md
