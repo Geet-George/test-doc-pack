@@ -8,10 +8,12 @@ parts:
       sections:
       - file: content/course/projects/projects.md
       - file: content/course/projects/themes.md
-    - file: content/learning/quick-guide-to-git.md
-    - file: content/learning/guide-to-raising-issues.md
-    - file: content/learning/important-differences.md
-    - file: content/learning/python-in-a-terminal.md
-    - file: content/learning/local-to-remote.md
+    - file: content/learning/overview.md
+      sections:
+      - file: content/learning/quick-guide-to-git.md
+      - file: content/learning/guide-to-raising-issues.md
+      - file: content/learning/important-differences.md
+      - file: content/learning/python-in-a-terminal.md
+      - file: content/learning/local-to-remote.md
     - file: references.md
     - file: contributing.md
