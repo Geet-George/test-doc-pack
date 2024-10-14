@@ -253,9 +253,9 @@ FAILED <your-filename>.py::test_we_want_to_see_what_a_pytest_fail_looks_like - a
 
 The output tells us that `pytest` collected 2 items (2 tests, we have two `test_` functions now) and that 1 test failed. It also tells us which test failed and why. The fact that pytest can find your test functions and run them and notify you of test performances makes it so much more efficient than running the code manually every time. 
 
-## COnclusion
+## Conclusion
 
-This just a small introduction to `pytest`. There are many more features in `pytest` that you can explore. You can write tests in separate files, you can run tests in parallel, you can run tests in a specific order, you can run only a specific test, you can run tests in a specific directory, and many more. You can find more information about `pytest` [in their documentation](https://docs.pytest.org/en/stable/index.html).
+This is just a small introduction to `pytest`. There are many more features in `pytest` that you can explore. You can write tests in separate files, you can run tests in parallel, you can run tests in a specific order, you can run only a specific test, you can run tests in a specific directory, and many more. You can find more information about `pytest` [in their documentation](https://docs.pytest.org/en/stable/index.html).
 
 That's it as an introduction to testing! You now know how to write tests for your code and run them using `pytest`. Happy testing! 🧪
 
