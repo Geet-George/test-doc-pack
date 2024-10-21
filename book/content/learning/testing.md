@@ -1,4 +1,4 @@
-# Testing
+# 5. Testing
 
 When we write code, we want to make sure it works as expected. We can do this by writing tests. Tests are just Python functions that we run to check if our code performs as expected.
 

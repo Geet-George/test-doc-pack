@@ -1,4 +1,4 @@
-# Git - A Quick Guide
+# 3. Git - A Quick Guide
 
 This is supposed to be a quick reference guide to using Git. It is not meant to be comprehensive. For a good understanding of Git, I would highly recommend the freely available [Pro Git book](https://git-scm.com/book/en/v2). The book is an excellent resource not just for beginners, but also for advanced users who can use it as a reference to understand what goes on under the hood.
 
