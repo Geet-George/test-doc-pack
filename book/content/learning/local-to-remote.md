@@ -1,4 +1,4 @@
-# Local to Remote (Communicating changes to Github)
+# 4. Local to Remote (Communicating changes to Github)
 
 In this guide, you'll learn how to add your Python functions to `.py` files (learn how to work with `.py` files [in the Python-in-a-Terminal guide](python-in-a-terminal.md).)and push them to your remote repository on GitHub. We assume you’ve already completed the setup (installed Git, configured user details, cloned your repository) as explained in the [Quick Guide to Git](quick-guide-to-git.md).
 

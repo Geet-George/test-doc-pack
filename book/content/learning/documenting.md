@@ -1,4 +1,4 @@
-# Documenting your work
+# 6. Documenting your work
 
 Documenting your work is an essential part of the software development process. It helps others, but more importantly, it helps you. A few months after you've written a piece of code, you might not remember what it does or why you wrote it in a certain way. If you've documented it well, you can easily understand what you did and why you did it. There are several ways to document your work, such as writing docstrings for your functions, and writing a `README.md` file in your repository. We'll learn these in our course. 
 

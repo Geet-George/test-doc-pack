@@ -1,4 +1,4 @@
-# Python in a Terminal
+# 1. Python in a Terminal
 
 You probably started learning Python with Jupyter notebooks and are now comfortable with it — writing code, running cells, and seeing instant feedback. But Python isn't just limited to notebooks! You can run Python directly from your computer's terminal (also called the command line or shell). This is super useful for running standalone Python scripts or automating tasks without needing a notebook. Let’s get you started on running Python in the terminal!
 
