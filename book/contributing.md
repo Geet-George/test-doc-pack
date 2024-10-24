@@ -50,6 +50,8 @@ If you want to contribute, but don't know where to start, you can also have a lo
 
     Every commit makes changes that are justified by one reason. The size of a commit could be a single character change or a change in thousands of lines across millions of files. But the reason behind the commit should ideally be as solitary as possible. Commit often, but not too often. I think Henry VIII might have said that.
 
+    **Building the book locally**
+
     If you'd like to see how the changes you've made in the documentation look, you can build the book locally. You can do this by running the following command in the terminal:
 
     ```bash
