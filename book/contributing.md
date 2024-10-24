@@ -61,7 +61,7 @@ If you want to contribute, but don't know where to start, you can also have a lo
     ```bash
     pip install teachbooks
     ```
-    
+
     You can then view the book by opening the `book/_build/html/index.html` file in your browser. Sometimes, you might need to clear the cache of your browser to see the changes or run the build command again. Also, note that if you have created a new file, you will need to add it to the `book/_toc.yml` file to see it rendered on the website.
 
 4. **Submit pull request**
@@ -76,3 +76,4 @@ If you want to contribute, but don't know where to start, you can also have a lo
 
 6. **... And that's it! Thanks for helping**
 
+P.S. If something here doesn't work, or you have suggestions to improve this guide, feel free to submit an issue or PR. :)
