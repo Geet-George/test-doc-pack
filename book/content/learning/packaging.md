@@ -62,3 +62,34 @@ authors = [
 Here, we've hardcoded the version by typing out a string. But you can also use a variable to specify the version. This is useful if you want to update the version automatically when you release a new version of your package. This is called dynamic versioning, as opposed to static versioning, where you manually update the version string.
 
 You can add more metadata to this section, such as the license, keywords, and classifiers. This information helps users understand what your package does and how it can be used.
+
+## Adding dependencies to your package
+
+Another essential part of packaging your code is specifying its dependencies. Dependencies are other packages that your package relies on to work correctly. By specifying your dependencies, you ensure that `pip` installs all the necessary packages when someone installs your package. This makes it easier for users to use your package without having to worry about installing dependencies manually. 
+
+Here’s an example of how you can add dependencies to your `pyproject.toml` file:
+
+```toml
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-package"
+version = "0.1.0"
+description = "A simple package that does something cool"
+authors = [ 
+    {name = "Your Name", email = "you@yourdomain.com"},
+]
+dependencies = ["numpy", "pandas", "matplotlib"]
+```
+
+In this example, we’ve added a new key called `dependencies` to the `[project]` section of the `pyproject.toml` file. This key specifies the dependencies of your package, such as `numpy` and `pandas`. When someone installs your package using `pip`, `pip` will also install these dependencies to ensure that your package works correctly. If you have other dependencies such as `tkinter` or `scikit-learn`, you can add them to the list as well. 
+
+Often, it is a good idea to specify the version of the dependencies that your package requires because different versions of a package can have different features or bugs. By specifying the version, you ensure that there are no compatibility issues or conflicts between the dependencies. Here’s an example of how you can specify versions of dependencies:
+
+```toml
+dependencies = ["numpy>=1.0", "pandas>=1.0", "matplotlib==3.0.2"]
+```
+
+In this example, we’ve specified that our package requires `numpy` version 1.0 or higher, `pandas` version 1.0 or higher, and `matplotlib` to be exactly version 3.0.2. This ensures that `pip` installs the correct versions of the dependencies when someone installs your package.
