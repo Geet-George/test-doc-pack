@@ -44,3 +44,21 @@ authors = [
 ```
 
 In this example, we’ve added a new section called `[project]` to the `pyproject.toml` file. This section contains metadata about your package, such as its name, description, and authors. 
+
+## Adding the version of your package
+
+We should also add the version of the package. The version is simply a string that specifies the version of your package. Here’s how you can add the version to the `pyproject.toml` file:
+
+```toml
+[project]
+name = "my-package"
+version = "0.1.0"
+description = "A simple package that does something cool"
+authors = [ 
+    {name = "Your Name", email = "you@yourdomain.com"},
+]
+```
+
+Here, we've hardcoded the version by typing out a string. But you can also use a variable to specify the version. This is useful if you want to update the version automatically when you release a new version of your package. This is called dynamic versioning, as opposed to static versioning, where you manually update the version string.
+
+You can add more metadata to this section, such as the license, keywords, and classifiers. This information helps users understand what your package does and how it can be used.
