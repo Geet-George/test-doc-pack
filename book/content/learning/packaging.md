@@ -93,3 +93,39 @@ dependencies = ["numpy>=1.0", "pandas>=1.0", "matplotlib==3.0.2"]
 ```
 
 In this example, we’ve specified that our package requires `numpy` version 1.0 or higher, `pandas` version 1.0 or higher, and `matplotlib` to be exactly version 3.0.2. This ensures that `pip` installs the correct versions of the dependencies when someone installs your package.
+
+## Building your package
+
+```{note}
+Your project only needs to have the `pyproject.toml` file in the root directory. The final project assessment does not require you to build your package. However, it is a simple step after you have created your `pyproject.toml` file, which will help you understand the packaging process better. Learning this will help you in the future and also to understand better what actually happens when you install a package using `pip`.
+```
+
+What you have done so far is to create a `pyproject.toml` file that specifies the build system, metadata, and dependencies of your package. After this, you need to build your package so that it can be installed using `pip`. As explained earlier, building your package involves creating distributable versions of your code that can be easily installed on other machines. 
+
+```{warning}
+Make sure you have the `setuptools` and `wheel` packages installed before running this command. You can install it using `pip install setuptools wheel`. Also, it'll be good to upgrade to the latest `build` package by running `pip install --upgrade build`.
+```
+
+If you have multiple folders in your project, `pip` might have trouble building your package, because it expects a single folder with all the necessary files. In such cases, you can create a `src` folder and move all your Python files into your root directory where `pyproject.toml` also lies. So, now your project structure will look something like this:
+
+```
+my-package/
+--- pyproject.toml
+--- src/
+    |--- data_folder/
+    |--- reference_folder/
+    |--- some_functions.py
+    |--- main.py
+```
+
+Now, to build your package, you need to run the following command in your terminal in the same directory as your `pyproject.toml` file:
+
+```bash
+python -m build
+```
+
+When you run this command, the terminal will print out a bunch of messages as it builds your package. If everything goes well, you should see a message that says something like `Successfully built my-package-0.1.0.tar.gz` and `Successfully built my-package-0.1.0-py3-none-any.whl`. This means that `pip` has successfully created a distributable version of your package.
+
+You'll see that `pip` has created a `dist` folder in your project directory. This folder contains the distributable versions of your package, namely a `.tar.gz` file and a `.whl` file. These are the distributable versions of your package. So, what are these files? The `.tar.gz` file is a source distribution of your package, which contains all the necessary files to build and install your package. The `.whl` file is a built distribution of your package, which is a binary distribution that can be installed on other machines. 
+
+For us, it doesn't matter which file we use, because `pip` can handle both types of distributions. That said, the `.whl` file is more efficient and faster to install, so it is the preferred distribution format. I highly recommend going through [this tutorial](https://realpython.com/python-wheels/) if you want to understand more about the differences between source and wheel distributions.
