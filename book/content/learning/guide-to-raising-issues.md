@@ -1,4 +1,4 @@
-# 7. How to raise an issue
+# 8. How to raise an issue
 
 ```{warning}
 For support on your project, you must **raise an issue on YOUR OWN project's repository**, not on the course repository as shown in the example screenshots. 

@@ -1,4 +1,4 @@
-# Packaging
+# 7. Packaging
 
 So, what’s the deal with packaging our project? We already have our code in a folder—can’t we just zip it up and send it to someone?
 
