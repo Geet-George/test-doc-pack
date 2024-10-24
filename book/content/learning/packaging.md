@@ -129,3 +129,31 @@ When you run this command, the terminal will print out a bunch of messages as it
 You'll see that `pip` has created a `dist` folder in your project directory. This folder contains the distributable versions of your package, namely a `.tar.gz` file and a `.whl` file. These are the distributable versions of your package. So, what are these files? The `.tar.gz` file is a source distribution of your package, which contains all the necessary files to build and install your package. The `.whl` file is a built distribution of your package, which is a binary distribution that can be installed on other machines. 
 
 For us, it doesn't matter which file we use, because `pip` can handle both types of distributions. That said, the `.whl` file is more efficient and faster to install, so it is the preferred distribution format. I highly recommend going through [this tutorial](https://realpython.com/python-wheels/) if you want to understand more about the differences between source and wheel distributions.
+
+
+## Installing your package
+
+Now that you have built your package, you can install it on your machine using `pip`. To install your package, you need to run the following command in your terminal in the same directory as your `pyproject.toml` file:
+
+```bash
+pip install dist/my-package-0.1.0.tar.gz
+```
+Alternatively, you can install the `.whl` file:
+
+```bash
+pip install dist/my-package-0.1.0-py3-none-any.whl
+```
+
+When you run one of these commands, `pip` will install your package on your machine. You should see a message that says something like `Successfully installed my-package-0.1.0`. This means that `pip` has successfully installed your package.
+
+Now, you can use your package in your Python scripts by importing it like any other package. For example, if you have a function called `my_function` in your package, you can import it in your script like this:
+
+```python
+from my_package import my_function
+```
+
+And that’s it! You’ve successfully packaged your code and installed it on your machine. You can now share your package with others by uploading it to a package repository like [PyPI](https://pypi.org/). This way, others can install your package using `pip` and use it in their projects. 
+
+```{note}
+[TestPyPI](https://packaging.python.org/en/latest/guides/using-testpypi/) is a good starting point to test your package before uploading it to PyPI. It is a separate instance of the Python Package Index that allows you to test your package before making it public. The link provides a detailed guide on how to get started with TestPyPI. Once you are ready, you can upload your package to PyPI using the `twine` package and then, anyone can install your package using `pip install my-package`.
+```
