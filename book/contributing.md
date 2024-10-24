@@ -50,6 +50,22 @@ If you want to contribute, but don't know where to start, you can also have a lo
 
     Every commit makes changes that are justified by one reason. The size of a commit could be a single character change or a change in thousands of lines across millions of files. But the reason behind the commit should ideally be as solitary as possible. Commit often, but not too often. I think Henry VIII might have said that.
 
+    **Building the book locally**
+
+    If you'd like to see how the changes you've made in the documentation look, you can build the book locally. You can do this by running the following command in the terminal:
+
+    ```bash
+    teachbooks build book/
+    ```
+
+    Be sure that you have the `teachbooks` package installed. If not, you can install it by running:
+
+    ```bash
+    pip install teachbooks
+    ```
+
+    You can then view the book by opening the `book/_build/html/index.html` file in your browser. Sometimes, you might need to clear the cache of your browser to see the changes or run the build command again. Also, note that if you have created a new file, you will need to add it to the `book/_toc.yml` file to see it rendered on the website.
+
 4. **Submit pull request**
 
     Head over to Github and from the relevant branch in your fork, create a [Pull Request (PR)](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests).
@@ -62,3 +78,4 @@ If you want to contribute, but don't know where to start, you can also have a lo
 
 6. **... And that's it! Thanks for helping**
 
+P.S. If something here doesn't work, or you have suggestions to improve this guide, feel free to submit an issue or PR. :)
