@@ -11,3 +11,15 @@ A distributable is a version of your code that’s ready for others to use. Thin
 When you package your code, you create a distributable version known as a package. A package is a collection of Python files that can be easily installed using a package manager like `pip`. `pip` is the Python package manager that helps you install and manage Python packages.
 
 So, how does `pip` know what to do with your package? How does it know what to install and where? That’s where the `pyproject.toml` file comes in. The `pyproject.toml` is a file, which provides `pip` with all the necessary information about your project, such as your package name, version, dependencies, as well as instructions on how to build it. With this file, you ensure that your package is straightforward to install and use!
+
+What does the `pyproject.toml` file look like? Here’s an example:
+
+```toml
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+```
+
+Create a new file in your project's root directory and name it `pyproject.toml` (do not change the name of the file, keep it exactly `pyproject.toml`). Copy the above content into the file and save it.
+
+This is the most basic `pyproject.toml` file that you can have. It tells `pip` that your project uses `setuptools` as the build system. `setuptools` is a package that helps you build and distribute Python packages. The `build-backend` key specifies the build backend that `setuptools` should use to build your package. In this case, it’s `setuptools.build_meta`. But that is not something you need to worry about right now. Just know that this is the minimum you need to have in your `pyproject.toml` file and that `setuptools` is a popular example of a build system, not the only one.
