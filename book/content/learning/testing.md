@@ -198,6 +198,12 @@ Once you have successfully installed `pytest`, you can run all your tests by sim
 pytest <your-filename>.py
 ```
 
+```{warning}
+If your test functions require user input, you might see errors regarding `stdin`. In such cases, you can run the tests using the following command:
+
+`pytest <your-filename>.py -s`
+```
+
 Ahaa! What do you see? Is it something like this?
 
 ```bash
