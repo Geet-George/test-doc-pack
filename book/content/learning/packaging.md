@@ -22,6 +22,10 @@ build-backend = "setuptools.build_meta"
 
 Create a new file in your project's root directory and name it `pyproject.toml` (do not change the name of the file, keep it exactly `pyproject.toml`). Copy the above content into the file and save it.
 
+```{note}
+The TOML file is not a Python file, so you don't need to add the `.py` extension to the file name. The file name should be exactly `pyproject.toml`. TOML is a configuration file format that is easy to read and write to help package managers like `pip` understand the structure of your project, but at the same time be easily human-readable.
+```
+
 This is the most basic `pyproject.toml` file that you can have. It tells `pip` that your project uses `setuptools` as the build system. `setuptools` is a package that helps you build and distribute Python packages. The `build-backend` key specifies the build backend that `setuptools` should use to build your package. In this case, it’s `setuptools.build_meta`. But that is not something you need to worry about right now. Just know that this is the minimum you need to have in your `pyproject.toml` file and that `setuptools` is a popular example of a build system, not the only one.
 
 ## Adding metadata to your package
