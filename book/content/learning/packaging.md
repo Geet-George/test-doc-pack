@@ -110,16 +110,17 @@ What you have done so far is to create a `pyproject.toml` file that specifies th
 Make sure you have the `setuptools` and `wheel` packages installed before running this command. You can install it using `pip install setuptools wheel`. Also, it'll be good to upgrade to the latest `build` package by running `pip install --upgrade build`.
 ```
 
-If you have multiple folders in your project, `pip` might have trouble building your package, because it expects a single folder with all the necessary files. In such cases, you can create a `src` folder and move all your Python files into your root directory where `pyproject.toml` also lies. So, now your project structure will look something like this:
+If you have multiple folders in your project, `pip` might have trouble building your package, because it expects a single folder with all the necessary files. In such cases, you can create a `src` folder and a folder inside there with your package's name. Move all your Python files into this directory. So, now your project structure will look something like this:
 
 ```
 my-package/
 --- pyproject.toml
 --- src/
-    |--- data_folder/
-    |--- reference_folder/
-    |--- some_functions.py
-    |--- main.py
+    |--- your_project_name/
+        |--- data_folder/
+        |--- reference_folder/
+        |--- some_functions.py
+        |--- main.py
 ```
 
 Now, to build your package, you need to run the following command in your terminal in the same directory as your `pyproject.toml` file:
@@ -153,7 +154,7 @@ When you run one of these commands, `pip` will install your package on your mach
 Now, you can use your package in your Python scripts by importing it like any other package. For example, if you have a function called `my_function` in your package, you can import it in your script like this:
 
 ```python
-from my_package import my_function
+from your_project_name import my_function
 ```
 
 And that’s it! You’ve successfully packaged your code and installed it on your machine. You can now share your package with others by uploading it to a package repository like [PyPI](https://pypi.org/). This way, others can install your package using `pip` and use it in their projects. 
