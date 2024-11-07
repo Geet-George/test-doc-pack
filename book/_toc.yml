@@ -11,6 +11,7 @@ parts:
       - file: content/course/evaluation.md
     - file: content/learning/overview.md
       sections:
+      - file: content/learning/working-with-the-terminal.md
       - file: content/learning/python-in-a-terminal.md
       - file: content/learning/important-differences.md
       - file: content/learning/quick-guide-to-git.md
