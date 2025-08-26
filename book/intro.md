@@ -52,3 +52,5 @@ More course details are available in the [course overview](content/course/overvi
 ## Feedback welcome 
 
 This being a digital "textbook", we hope to continue improving the content here and provide you with the best form of resources for your learning. If you have any feedback, please feel free to email me at g.george@tudelft.nl or better yet, [raise an issue in the Github repository](https://github.com/Geet-George/test-doc-pack/issues/new).
+
+<!-- [View slides](_build/html/slides/slides.html) -->

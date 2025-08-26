@@ -1,0 +1,26 @@
+format:
+  revealjs:
+    self-contained: true
+    transition: slide
+    slide-number: true
+    code-background: true
+    # logo: ../../static/logos.png
+    footer: "[AESB2122 course page](../slides_index.html)"
+    # theme: [default, custom.scss]
+    # chalkboard:
+    #   buttons: true
+    # multiplex: true
+    navigation-mode: linear
+    auto-stretch: true
+    center: true
+    mermaid:
+      theme: default
+    controls: true          # Show the next/prev arrows
+    controls-layout: bottom-right
+    progress: true
+    # Optional: add a fullscreen button
+    plugins: [RevealFullscreen]
+
+jupyter: python3
+execute:
+  cache: true
