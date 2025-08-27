@@ -52,6 +52,27 @@ If you want to contribute, but don't know where to start, you can also have a lo
 
     **Building the book locally**
 
+    <details>
+      <summary><b>Caveats for Quarto Slide Decks</b></summary>
+      <ol>
+        <li>Ensure that the `_quarto.yml` file has the following config lines: 
+        <pre>
+        project:
+          output-dir: "../_build/html/slides/"</pre></li>
+        <li>Include the following `revealjs` configs in the `_metadata.yml` for the slide decks to work properly with Jupyterbook.
+        <pre>
+        format:
+            revealjs:
+                self-contained: true
+        </pre></li>
+        <li>Build the slides using Quarto first before running <code>teachbooks build</code>. Do this with <code>
+        quarto render /path/to/slides.qmd</code>. The output-dir specified in the <code>_quarto.yml</code> should ensure that the HTML is rendered in the correct location for Jupyterbook (<code>teachbooks</code>) to be able to find it.
+        </li>
+        <li>If this is a new slide deck you created, make sure to add it to the <code>slides_index.md</code> file so that it gets included in the book. For example, if the slide-deck is titled <code>lecture1_slides.qmd</code>, add the following: <xmp><a href="slides/lecture1_slides.html">Lecture-1 Slides</a></xmp></li>
+      </ol>
+    </details>
+
+    <br />
     If you'd like to see how the changes you've made in the documentation look, you can build the book locally. You can do this by running the following command in the terminal:
 
     ```bash
