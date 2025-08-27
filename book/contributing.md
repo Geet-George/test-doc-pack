@@ -58,7 +58,7 @@ If you want to contribute, but don't know where to start, you can also have a lo
         <li>Ensure that the `_quarto.yml` file has the following config lines: 
         <pre>
         project:
-          output-dir: "../_build/html/slides/"</pre></li>
+          output-dir: "."</pre></li>
         <li>Include the following `revealjs` configs in the `_metadata.yml` for the slide decks to work properly with Jupyterbook.
         <pre>
         format:
@@ -69,6 +69,7 @@ If you want to contribute, but don't know where to start, you can also have a lo
         quarto render /path/to/slides.qmd</code>. The output-dir specified in the <code>_quarto.yml</code> should ensure that the HTML is rendered in the correct location for Jupyterbook (<code>teachbooks</code>) to be able to find it.
         </li>
         <li>If this is a new slide deck you created, make sure to add it to the <code>slides_index.md</code> file so that it gets included in the book. For example, if the slide-deck is titled <code>lecture1_slides.qmd</code>, add the following: <xmp><a href="slides/lecture1_slides.html">Lecture-1 Slides</a></xmp></li>
+        <li>Note that the current setup is to locally render the slides using Quarto, build the webpage (book) using Jupyterbook (<code>teachbooks build</code>), and finally add the HTML output to the repository (don't forget this last bit!). Only then will the rendered slides show up on the webpage. The Quarto rendering does not happen as part of the CI/CD pipeline. It would be great though to include this as part of the CI/CD pipeline some day.</li>
       </ol>
     </details>
 
