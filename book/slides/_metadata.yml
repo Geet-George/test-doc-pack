@@ -1,0 +1,20 @@
+format:
+  revealjs:
+    self-contained: true
+    transition: slide
+    slide-number: true
+    code-background: true
+    logo: ../figures/TUDelft_cropped_logo.png
+    footer: "[AESB2122 Course Page](../slides_index.html)  |  <a href=\"#/TOC\">TOC</a>"
+    navigation-mode: linear
+    auto-stretch: true
+    center: true
+    mermaid:
+      theme: default
+    controls: true
+    controls-layout: edges
+    progress: true
+
+jupyter: python3
+execute:
+  cache: true
