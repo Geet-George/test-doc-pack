@@ -1,4 +1,4 @@
 project:
-  output-dir: "../_build/html/slides/"
+  output-dir: "."
 
 toc: true
