@@ -1,0 +1,284 @@
+---
+title: "Quick Python Basics"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+
+---
+
+# Variable
+
+## Python's in-built data types
+
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+    A[Python Built-in Data Types]
+
+    A --> B(Numeric)
+    B --> B1[int<br>float<br>complex]
+    
+    A --> C(Sequence Type)
+    C --> C1[string<br>list<br>tuple]
+    
+    A --> D(Boolean)
+    D --> D1[bool]
+
+    A --> E(Mapping Type)
+    E --> E1[dict]
+```
+
+- There are also other data types (e.g.`set`, `binary`, etc.) but these should suffice for most purposes.
+
+## Numeric Types
+
+```{.python}
+# integers: 
+integer_variable = 1
+
+# floats:
+float_variable = 1.234
+
+# complex numbers:
+complex_variable = 1 + 2j
+```
+
+## Sequence Types - String
+
+```{.python}
+# strings:
+string_variable = 'Hello, this is some text and we call it a string'
+```
+
+- A string is a sequence of characters, created by enclosing them in quotes.
+- Is there a "text" or "character" data type in Python? 
+    - Nope, you just have strings. A character is simply a string of length 1.
+
+## Sequence Types - List
+
+```{.python}
+# lists:
+list_variable = [1, 2, 3, 4, 5]
+```
+
+- A list is a collection of items - simply put them in square brackets separated by commas.
+- Lists can contain items of different types, including other lists.
+
+## Sequence Types - Tuple
+
+```{.python}
+# tuples:
+tuple_variable = (1, 2, 3, 4, 5)
+```
+
+- A tuple is similar to a list, but it is immutable (cannot be changed).
+- Tuples are created by enclosing items in parentheses.
+
+## Boolean Type
+
+```{.python}
+# booleans:
+boolean_variable = True
+```
+
+- A boolean represents one of two values: `True` or `False`.
+- Booleans are often used in conditional statements to control the flow of a program.
+
+# Use Case for Python elements
+
+- You’re going on a grocery shopping trip 🛒  
+- Let’s use Python to keep track of what we need.  
+
+---
+
+## Lists
+
+::: {.fragment}
+```{python}
+#| echo: true
+
+# A list of grocery items
+groceries = ["apples", "bananas", "milk", "bread"]
+
+print(groceries)
+```
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+groceries.append("eggs")   # add something
+groceries.remove("milk")   # remove something
+print(groceries)
+```
+:::
+
+::: {.fragment}
+### How to access list items
+
+```{python}
+#| echo: true
+# Accessing elements in a list
+print("First item:", groceries[0])
+print("Second item:", groceries[1])
+```
+:::
+
+## Tuples
+
+::: {.fragment}
+```{python}
+#| echo: true
+my_tuple = ("apples",4)
+```
+
+- Tuples are immutable (cannot be changed).
+- Useful for pairing data like (item, quantity) or coordinates (x, y).
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+
+# Each grocery item with a quantity
+groceries = [
+    ("apples", 4),
+    ("bananas", 6),
+    ("milk", 1),
+    ("bread", 2),
+]
+
+print("First tuple:", groceries[0])  
+```
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+# Accessing elements in a tuple
+print("First item:", groceries[0][0])
+print("Quantity:", groceries[0][1])
+```
+:::
+
+## But what if I forgot the sequence? 
+
+### The `if` conditional
+
+::: {.fragment}
+```{python}
+#| echo: true
+# Finding the quantity of bananas
+item = groceries[0]
+grocery_item = item[0]
+if grocery_item == "bananas":
+    print("Quantity of bananas:", item[1])
+else:
+    print("No bananas found")
+```
+
+- The `if` statement returns `True` if the condition is met, and `False` otherwise.
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+
+# Finding the quantity of bananas
+item = groceries[1]
+grocery_item = item[0]
+if grocery_item == "bananas":
+    print("Quantity of bananas:", item[1])
+else:
+    print("No bananas found")
+```
+:::
+
+- What if `bananas` was the 963rd item in the list? This is not a smart strategy...
+
+## The `for` loop
+
+::: {.fragment}
+```{python}
+#| echo: true
+# Finding the quantity of bananas
+for item in groceries:
+    grocery_item = item[0]
+    if grocery_item == "bananas":
+        print("Quantity of bananas:", item[1])
+```
+:::
+
+::: {.fragment}
+### What's really going on under the hood?
+
+```{python}
+#| echo: true
+for item in groceries:
+    print(item)
+    print("Item done. Next one!")
+```
+:::
+
+- Good to learn `for` loops, but looping is inefficient to find items in a large list.
+- Wouldn’t it be nice to just look it up directly?
+
+## Mapping Type - Dictionary
+
+::: {.fragment}
+```{python}
+#| echo: true
+# Dictionary: item → quantity
+groceries = {
+    "apples": 4,
+    "bananas": 6,
+    "milk": 1,
+    "bread": 2
+}
+```
+:::
+
+- A dictionary is a collection of key-value pairs. Here, a key is `"apples"` and the value is `4`.
+- Think of keys as "addresses" for the values they point to. So, keep them unique - otherwise you'll overwrite it.
+- Values can be of any type, including lists, tuples, or even other dictionaries.
+
+::: {.fragment}
+``` {python}
+#| echo: true
+# Access a value in a dictionary
+print("Bananas:", groceries["bananas"])
+```
+:::
+
+## Dictionary operations
+
+::: {.fragment}
+```{python}
+#| echo: true
+groceries["eggs"] = 12      # add eggs
+groceries["milk"] = 2       # update milk quantity
+del groceries["bread"]      # remove bread
+
+print(groceries)
+```
+:::
+
+- Fast lookup, update, and deletion.
+
+- Much more convenient than lists of tuples for ***this case***.
+
+
+# Exercise
+
+A. Create a project directory (folder)
+
+B. Create a .py file in that directory
+
+C. Copy some of the code snippets you practiced from this presentation into your .py file
