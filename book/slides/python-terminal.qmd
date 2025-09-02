@@ -1,0 +1,180 @@
+---
+title: "Python in a Terminal"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+---
+
+## Jupyter Notebooks
+
+- Interactive coding environment.
+- Great for data exploration, quick visualization, and prototyping
+
+## Python in a Terminal
+
+- Python ≠ **Jupyter Notebooks**
+- You can also run Python directly from your **terminal (command line / shell)**
+- Useful for running scripts & automation
+
+---
+
+## Why Should You Care?
+
+![[Source](https://10guards.com/it/blog/2021/06/16/hackers-in-movies-top-10-scene-analysis/)](graphics/hacker-in-movie.png){fig-align="center" width=55%}
+
+## Why Should You Care?
+
+![[Source](https://www.reddit.com/r/ProgrammerHumor/comments/u3o70o/hacking_in_movies_vs_behind_the_scene_of_that/)](graphics/hacker_meme.png){fig-align="center" width=60%}
+
+## Why Should You Care?
+
+1. **Run scripts faster** – no need to open Jupyter every time.  
+2. **Automate tasks** – schedule scripts to run when you want.  
+3. **Terminal skills = superpower** 💪  
+   - More control over your computer.  
+   - Helps you understand how systems work.  
+
+---
+
+## Step 1: Open the Terminal 
+
+::: {.nonincremental}
+
+### JupyterLab
+
+- Click the `+` button in Jupyterlab's file browser and select `Terminal` in the new Launcher tab
+
+### Jupyter Notebook
+
+- Click on the `New` button in the top right corner and select `Terminal`.
+
+### VS Code
+
+- To open a new terminal, go to the top menu and select `Terminal` > `New Terminal`.
+:::
+
+---
+
+## Step 2: Check Python Installation
+
+Type in terminal:
+```bash
+python --version
+```
+
+✅ Output (example):  
+```
+Python 3.X.X
+```
+where the Xs correspond to the specific version numbers installed on your system.
+---
+
+## Step 3: Interactive Mode
+
+Type:
+```bash
+python
+```
+
+You’ll see:
+```
+Python 3.x.x ...
+>>>
+```
+
+Now try:
+```{python}
+#| echo: true
+print("Hello from the terminal!")
+```
+
+Exit with:
+```bash
+exit()
+```
+
+## Checking Your Current Directory
+
+In the terminal, type:
+
+:::: {.columns}
+::: {.column width="50%"}
+**Windows**  
+```bash
+cd
+```
+:::
+::: {.column width="50%"}
+**Mac / Linux**
+```bash
+pwd
+```
+:::
+::::
+You will see some path that shows you where you currently are. Example:
+```bash
+/Users/geetgeorge/Work/Education/AESB2122/generate-signals/scripts/
+```
+
+## Changing directory
+
+::: {.nonincremental}
+
+- Use `cd` (change directory) to move to another folder:
+(Note that for Windows enter `\` instead of `/` in the paths)
+
+```bash
+cd "/Users/geetgeorge/Work/Education/"
+```
+
+- How to jump to one step back in the directory structure:
+
+```bash
+cd ..
+```
+:::
+
+## Terminal tips
+
+- Speed up your workflow with tab completion! If you start typing a directory name and press `Tab`, it will auto-complete the name for you, provided there are not multiple directories starting with that same prefix.
+- Use `ls` (Mac/Linux) or `dir` (Windows) to list files in the current directory.
+- Press up and down arrow keys to navigate through your command history. No need to retype commands!
+
+---
+
+## Step 4: Run Python Files
+
+::: {.fragment}
+Let’s create a script `hello.py`. In that script, write:
+
+```python
+print("Hello from a Python file!")
+```
+:::
+
+::: {.fragment}
+
+### Check your current directory
+Go to the terminal and if needed, change directory to where you have the `hello.py` file saved.
+:::
+
+::: {.fragment}
+### Run the File
+Type:
+```bash
+python hello.py
+```
+
+Output:
+```bash
+Hello from a Python file!
+```
+
+🎉 You ran Python from the terminal!
+:::
