@@ -4,11 +4,10 @@ root: intro.md
 parts:
   - caption: Contents
     chapters:
-    - file: content/course/overview.md
-      sections:
-      - file: content/course/projects/projects.md
-      - file: content/course/projects/themes.md
-      - file: content/course/evaluation.md
+    # - file: content/course/overview.md
+    #   sections:
+    #   - file: content/course/projects/projects.md
+    #   - file: content/course/evaluation.md
     - file: content/learning/overview.md
       sections:
       - file: content/learning/python-in-a-terminal.md
