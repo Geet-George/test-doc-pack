@@ -1,0 +1,157 @@
+---
+title: "Functions, Modules and Libraries"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+---
+
+## Functions 
+
+::: {.fragment .nonincremental}
+- A function is a reusable block of code that performs a specific task.
+- **Syntax**:
+```python
+def function_name(arguments):
+    # code block
+    return result
+```
+:::
+::: {.fragment .incremental}
+- `def`: keyword used to define a function. After `def`, Python understands that a function is being defined
+- arguments: a list of values that the function can accept as input. These could be any in number, any data type, but position matters (unless they are keyword arguments)
+- `return`: keyword used to exit a function and send back a value. Anything after `return` is the value that gets sent back. Also, the function is considered finished when it hits a `return` statement.
+:::
+
+## Convert from Celsius to Kelvin
+
+::: {.fragment}
+Let's say we want to convert temperatures to Kelvin
+
+```{python}
+#| echo: true
+temperature_celsius = 25
+temperature_kelvin = temperature_celsius + 273.15
+print(temperature_kelvin)
+```
+:::
+
+::: {.fragment .nonincremental}
+
+How to make this a function? 
+
+- Identify inputs (argument) and outputs (return)
+- Place the code that converts input to outputs between the `def` statement and `return` statement
+- Ensure that the argument keyword is used correctly in the code
+
+```python
+def convert_celsius_to_kelvin(temperature_C):
+    temperature_K = temperature_C + 273.15
+    return temperature_K
+```
+:::
+
+
+## Calling the Function
+
+```{python}
+def convert_celsius_to_kelvin(temperature_C):
+    temperature_K = temperature_C + 273.15
+    return temperature_K
+```
+
+```{python}
+#| echo: true
+
+temperature_kelvin = convert_celsius_to_kelvin(25)
+print(temperature_kelvin)
+```
+
+::: {.fragment}
+### Practice exercise
+
+Create a function that identifies whether a given input in degree Celsius is a possible surface temperature in the Netherlands and if so, convert to Kelvin. Otherwise return the input value. 
+:::
+
+::: {.fragment}
+```{python}
+#| echo: true
+def convert_celsius_to_kelvin(temperature_C):
+    if -70 <= temperature_C <= 70:  # Surface temperature range in the Netherlands
+        temperature_K = temperature_C + 273.15
+        return temperature_K
+    return temperature_C
+```
+:::
+
+## Use functions in a different file
+
+::: {.fragment}
+Create a new Python file named `sine_wave.py`. In it:
+```{python}
+#| echo: true
+
+import numpy as np
+
+def create_sine_wave(frequency, duration):
+    t = np.linspace(0, duration, int(44100 * duration))
+    return np.sin(2 * np.pi * frequency * t)
+```
+:::
+
+::: {.fragment}
+Check the output:
+```{python}
+#| echo: true
+print(create_sine_wave(440, 2))
+```
+:::
+
+## Import our function to a different file
+
+::: {.fragment}
+
+Create a new file named `script.py`. In it:
+
+```python
+from sine_wave import create_sine_wave
+
+sine_wave = create_sine_wave(440, 2)
+print(sine_wave)
+```
+:::
+
+::: {.fragment}
+In using a function from a different file, what we did right now is **import a module**!
+:::
+
+## Modules 
+
+A module is simply a file containing any Python code (functions, classes, variables). 
+
+- You can simply import such modules and use them in other Python scripts. This is called **modular programming** and it helps in organizing code, reusability, and maintaining the codebase.
+
+- A module can have other modules imported within it, allowing for a hierarchical organization of code.
+
+- So, this is essentially what you do when you, for instance, do `import numpy as np`. You are importing the NumPy ***library*** which gives access to all the functions and classes defined in that library.
+
+- Libraries are essentially collections of modules, usually thought of as a package.
+
+## Exercise
+
+A. Create a Python script `sine.py` that:
+
+    1. Defines a function `create_sine_wave` that generates a sine wave given a frequency and duration.
+
+    2. Plot the output of the function and save it as `sine_wave.png`.
+
+B. Run the script from the terminal and check the output.
+
+C. Create another script `script.py` that imports the `create_sine_wave` function from `sine.py` and uses it to plot 3 sine waves with different frequencies in the same plot.
+
+D. Run `script.py` from the terminal and check the output.
