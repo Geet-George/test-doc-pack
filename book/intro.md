@@ -39,9 +39,9 @@ These stages could be linear (such as in the [Waterfall model](https://en.wikipe
 
 ## Our Course
 
-In this course, we will focus on the **Implementation**, **Testing**, **Documentation** and **Deployment** stages, although we will touch upon the other stages as well. For example, your [project proposal](content/course/projects/projects.md) includes the **Planning** and **Design** stages. 
+In this course, we will focus on the **Implementation**, **Testing**, **Documentation** and **Deployment** stages, although we will touch upon the other stages as well.
 
-We will use Python as the programming language for this course. We will also rely on Git for version control and Gitlab for collaboration. We will use libraries such as `pytest` for testing and `sphinx` for documentation. We will also learn about packaging our code with [PyPi](https://pypi.org/) so that it can be shared with others. At the end of the course, you will have a functioning Python package that you can simply:
+We will use Python as the programming language for this course. We will also rely on Git for version control and Gitlab for collaboration. We will use libraries such as `pytest` for testing. We will also learn about packaging our code with [PyPi](https://pypi.org/) so that it can be shared with others. Maybe at the end of the course, you will have a functioning Python package that you can simply install with:
 
 ```bash
 pip install your-package-name
