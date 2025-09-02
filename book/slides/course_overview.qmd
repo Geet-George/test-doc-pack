@@ -2,10 +2,115 @@
 title: "Course Overview"
 subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
 author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        toc: false
 ---
+
+Geet George (he/him)
+
+- India &rarr; Germany (PhD, postdoc) &rarr; Netherlands (Asst. Prof.)
+- Clouds and precipitation - their response to climate change 🌦️🌡️
+- Satellite, aircraft & drone measurements + machine learning 
+- Python & software enthusiast | Advocate for good programming practices
+- Recent realization: My hobby is to not stick to one hobby! 🤦‍♂️ *(currently birding)*
+
+# Why learn Python & software development?
+
+## Python - versatile language
+
+- is widely used in various domains which use data science, AI, web development, and many more. 
+- can automate repetitive tasks
+- analyze data efficiently
+- build large-scale modular solutions
+
+## Software development
+
+- includes Python scripting but also...
+- ... includes collaborating on projects
+- and often contributing to open-source 
 
 # What the course is and isn't?
 
-# How the course is taught
+You've already learnt some Python in the last year. Here, we'll continue on that foundation.
 
-# Exams, tests and assignments
+## What the course includes?
+
+- Slightly more Python (e.g., dictionaries)
+- Structuring your scripts
+- Applying good practices in software development (version control, tests, etc.)
+
+## What the course isn't?
+
+- A beginner's course in Python (you're expected to know what are functions, conditional statements, etc.)
+- An advanced course in Python (we won't be covering advanced topics like decorators, generators, objects, etc.)
+- Solely Python applications of S&S theory
+
+# How it's taught
+
+- 12 sessions through Q1
+- Project-based format (each of you has a project to work on)
+    - We learn about concepts and discuss them in class
+    - You implement them in your project
+- Assignments and exercises will help you implement what you've learned
+- Week by week, you gradually build your project
+
+## Exams, tests and assignments
+
+- Exams: None
+- Tests: Well... You should be able to explain code snippets. So, make sure you're present in class!
+- Assignments / Exercises: Yes, with every session, you'll have some exercises to help you implement what you've learned.
+
+## Assessment and grading
+
+- Your projects will be assessed based on the following criteria:
+    - Project's implementation of git
+    - Proper Python syntax and structuring
+    - Documentation
+    - Testing
+    - Packaging
+- If you follow the lectures and their exercises, you should be well-prepared for the assessments and wouldn't need to do much outside class. 
+
+## IDEs (in order of easiest to hardest for beginners)
+
+- Jupyter notebook / Jupyterlab : use both terminal and text editor there
+- VS Code : great for Python and general software development, with many extensions available
+- PyCharm, Spyder : popular IDEs for Python with many features (not as versatile as VS Code)
+- Simply use your computer's default text editor (e.g., Notepad on Windows, TextEdit on macOS) and the terminal
+- Best way is to use only the terminal (with `vim` or `nano` as text editors), but also the one with the steepest learning curve!
+
+# Help & Support
+
+## Teaching Team
+
+- Course webpage (https://geet-george.github.io/test-doc-pack) &rarr; slides also available there!
+- Instructor: Geet George (g.george@tudelft.nl)
+- TAs
+    - Dita Lumban Gaol
+    - Koen Haakman
+    - Owen O'Driscoll
+
+## Google, Stackoverflow, Tutorial blogs and videos
+
+- Great beginner-friendly resources available everywhere on the internet
+- Stackoverflow: The problem you're facing is very likely something someone has already faced a decade ago. Learn from others' mistakes ;)
+
+## Your classmates
+
+Nothing wrong with learning from each other! 
+
+But learn the reasoning and the principles behind the code, don't just replicate the code. It doesn't help anyone.
+
+## ChatGPT, Github Co-Pilot, Gemini, pick your poison...
+
+- Honestly, these tools are not good for beginners or students. 
+
+- Skips the learning process and leads to a lack of understanding of the underlying concepts.
+
+- You should understand every line of code that is in your project.
+
+- Sometimes, AI tools can help, but make sure you completely understand the solution they provide. 
+
+- These are used extensively now in the industry, so familiarity with them can be beneficial. However at your level use them as tools, not crutches.
