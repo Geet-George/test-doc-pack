@@ -139,3 +139,6 @@ pyproject.toml
 
 # OS
 **/*.DS_Store
+
+# Dev
+sandbox/
