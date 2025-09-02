@@ -1,0 +1,5 @@
+project:
+  output-dir: "."
+
+toc: true
+toc-depth: 1

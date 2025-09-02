@@ -132,9 +132,13 @@ dmypy.json
 # Jupyter Book
 _build/
 .teachbooks/
+.jupyter_cache/
 
 # poetry files
 pyproject.toml
 
 # OS
 **/*.DS_Store
+
+# Dev
+sandbox/
