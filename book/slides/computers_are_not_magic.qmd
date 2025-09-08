@@ -1,0 +1,499 @@
+---
+title: "Computers aren't magic"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+
+---
+
+# What is a computer?
+
+- Electronic machine that processes data
+- Executes instructions given to it (simply said, can run programs)
+- Examples: laptops, tablets, smartphones, TVs, automobile components, household appliances, etc.
+
+## Computer components
+
+```{mermaid}
+%%| fig-width: 100%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+graph LR
+    A[Input] --> B[Processing] --> C[Storage] --> D[Output]
+```
+
+::: {.fragment .nonincremental}
+### Input 
+
+- Devices that provide data to the computer
+- Examples: keyboard, mouse, scanner, microphone, etc.
+:::
+
+::: {.fragment .nonincremental}
+### Output
+
+- Devices that show you data from the computer
+- Examples: monitor, printer, speakers, headphones, etc.
+:::
+
+# Computer processing
+
+**Binary**
+0 and 1 - Two states
+
+## Think of lightbulbs...
+
+```{mermaid}
+%%| fig-width: 100%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    S0[Switch OFF: 0]:::off --> L0[Light OFF]:::off
+
+    classDef off fill:#ff4d4d,color:#ffffff,stroke:#b30000,stroke-width:2px;
+    classDef on fill:#4dff88,color:#000000,stroke:#00802b,stroke-width:2px;
+```
+
+```{mermaid}
+%%| fig-width: 100%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    S1[Switch ON: 1]:::on --> L1[Light ON]:::on
+
+    classDef off fill:#ff4d4d,color:#ffffff,stroke:#b30000,stroke-width:2px;
+    classDef on fill:#4dff88,color:#000000,stroke:#00802b,stroke-width:2px;
+```
+
+## Combining switches
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{mermaid}
+%%| fig-width: 75%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    %% Define styles
+    classDef off fill:#ff4d4d,color:#ffffff,stroke:#b30000,stroke-width:2px;
+    classDef on fill:#4dff88,color:#000000,stroke:#00802b,stroke-width:2px;
+    classDef S1 fill:#A7D13D,color:#000000,stroke:#b30000,stroke-width:2px;
+    classDef S2 fill:#3DD1B6,color:#000000,stroke:#00802b,stroke-width:2px;
+
+
+    %% State 00
+    S1_0[S1: 0]:::off --> ST00[00]:::S1
+    S2_0[S2: 0]:::off --> ST00
+
+
+    %% State 01
+    %% subgraph STATE01[State 01]
+    S1_0b[S1: 0]:::off --> ST01[01]:::S2
+    S2_1[S2: 1]:::on --> ST01
+    %% end
+```
+:::
+
+::: {.column width= "50%"}
+```{mermaid}
+%%| fig-width: 75%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    %% Define styles
+    classDef off fill:#ff4d4d,color:#ffffff,stroke:#b30000,stroke-width:2px;
+    classDef on fill:#4dff88,color:#000000,stroke:#00802b,stroke-width:2px;
+    classDef S3 fill:#5884CC,color:#000000,stroke:#b30000,stroke-width:2px;
+    classDef S4 fill:#A958CC,color:#000000,stroke:#00802b,stroke-width:2px;
+
+    %% State 10
+    %% subgraph STATE10[State 10]
+    S1_1[S1: 1]:::on --> ST10[10]:::S3
+    S2_0b[S2: 0]:::off --> ST10
+    %% end
+
+    %% State 11
+    %% subgraph STATE11[State 11]
+    S1_1b[S1: 1]:::on --> ST11[11]:::S4
+    S2_1b[S2: 1]:::on --> ST11
+    %% end
+
+```
+:::
+
+::::
+
+::: {.fragment}
+- With 2 switches, we can represent 4 states: 00, 01, 10, and 11.
+- With 3 switches, we can represent 8 states: 000, 001, 010, 011, 100, 101, 110, and 111.
+- With 8 switches, we can represent 256 states: 00000000, 00000001, 00000010, ..., 11111111.
+:::
+
+## Representing Data
+
+Data in a computer is represented using binary code (0s and 1s). Each switch (bit) can be in one of two states, allowing us to represent different values.
+
+8 bits = 1 byte (typical unit of digital data storage)
+
+::: {.fragment}
+Let's see how 8 switches can show a `7`.
+
+```{mermaid}
+%%| fig-width: 75%
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+    A[7] -->|Binary| B[00000111]
+```
+:::
+
+- Numbers: binary counting system
+
+- Text: ASCII/Unicode (e.g. A = 65 → 01000001)
+
+- Images: pixels stored as numbers (colors = binary values)
+
+## Switches as Decisions (Logic Gates)
+
+:::: {.columns}
+
+::: {.fragment .column width="30%"}
+**AND**: bulb lights only if both switches ON 
+
+![](graphics/AND.png)
+:::
+
+::: {.fragment .column width="30%"}
+**OR**: bulb lights if either switch ON 
+
+![](graphics/OR.png)
+:::
+
+::: {.fragment .column width="30%"}
+**NOT**: bulb lights if switch OFF 
+
+![](graphics/NOT.png)
+:::
+
+::::
+
+
+- One bulb = 2 states: ON (1) / OFF (0)
+- Connect switches in clever ways → logic gates
+
+
+---
+
+## From Switches to Circuits
+
+:::: {.columns}
+
+::: {.fragment .column width="50%"}
+
+Each switch is a transistor (tiny electronic switch)
+
+![By ArnoldReinhold - Own work, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=409337](graphics/Transistors.jpg)
+
+:::
+
+::: {.fragment .column width="50%"}
+
+Combine billions of transistors → circuits
+
+![Source: aPhoenix photographer/Shutterstock](graphics/chip.jpg)
+
+:::
+
+::::
+
+## Circuits ("chips") - Building blocks
+
+- Circuits perform operations:
+  - Add numbers
+  - Compare values
+  - Make decisions
+- Control external devices (e.g., motors, displays)
+- Store data
+
+---
+
+## CPU is a Giant Switchboard
+
+- CPU = Central Processing Unit
+- Network of billions of transistors - the brain of the computer
+- Executes instructions by switching on/off rapidly
+- There are also GPUs (Graphics Processing Units), but we won't discuss them here (extra slide for quick reference).
+
+## CPU v/s GPU
+
+| Feature               | CPU                                   | GPU                                   |
+|-----------------------|---------------------------------------|---------------------------------------|
+| Cores                 | Few (typically 4-16)                  | Many (hundreds to thousands)          |
+| Task Handling         | Sequential processing                 | Parallel processing                   |
+| Versatility           | More versatile, can handle a wide range of tasks | Specialized, excels at very specific tasks |
+| Ideal Use Cases       | General computing, single-threaded    | Graphics rendering, machine learning  |
+
+# Computer Storage
+
+Where data is kept for short-term or long-term use
+
+
+## Storage Types
+- **RAM (Random Access Memory)**: Fast, temporary storage
+- **Storage drive**: Slower, permanent storage
+
+
+## RAM v/s Storage Drive
+
+- Think of a kitchen: The RAM is the countertop where you prepare ingredients — it's fast and temporary. 
+- The storage drive is like the pantry or fridge where you store food for later.
+
+::: {.fragment}
+![[Source](https://commons.wikimedia.org/wiki/File:White_kitchen_with_cabinet_doors_and_drawers_opened_or_removed_so_that_real-life_stuff_can_be_seen_in_cabinets.jpg)](graphics/White_kitchen_with_cabinet_doors_and_drawers_opened_or_removed_so_that_real-life_stuff_can_be_seen_in_cabinets.jpg){width=50%}
+:::
+
+## RAM v/s Storage Drive
+
+| Feature               | Short-Term Storage                     | Long-Term Storage                      |
+|-----------------------|---------------------------------------|---------------------------------------|
+| Speed                 | Fast (e.g., RAM)                      | Slower (e.g., Hard Drive, SSD)       |
+| Volatility             | Volatile (data lost when powered off) | Non-volatile (data retained)         |
+| Capacity               | Limited (typically GBs)               | Larger (TBs or more)                 |
+| Use Cases              | Temporary data, active processes      | Permanent data, file storage          |
+| | ![[Fig source](https://commons.wikimedia.org/wiki/File:Ram_chip.jpg)](graphics/Ram_chip.jpg){width=45%} |![[Fig source](https://commons.wikimedia.org/wiki/File:Evolution_of_Data_Storage.jpg)](graphics/Evolution_of_Data_Storage.jpg){width=65%} |
+|
+
+## Cloud (Remote) storage
+
+- Data stored on remote servers via internet
+- Examples: Google Drive, Dropbox, iCloud
+- Pros: accessibility, backup, size and scalability
+- Cons: internet dependency, privacy concerns
+
+## Differences between local and cloud (remote) storage
+
+| Feature               | Local Storage                          | Cloud (Remote) Storage                |
+|-----------------------|---------------------------------------|---------------------------------------|
+| Accessibility          | Limited to physical location          | Accessible from anywhere with internet |
+| Collaboration          | Difficult (manual sharing)           | Easy (real-time collaboration)       |
+
+## Local v/s Cloud : Quick assessment
+
+- Open your machine's file explorer (or Finder on Mac) and see if you can distinguish between any local and cloud (remote) storage locations.
+
+::: {.fragment}
+![[Fig Source](https://www.theverge.com/2021/4/15/22385247/windows-file-explorer-design-concept-tabs-nested-folders)](graphics/fileexplorer.jpg){width=75%}
+:::
+
+## What is a File?
+
+- Typically, anything you would like to store long-term will be in a file.
+
+- File: A collection of data (stored as sequence of bytes) 
+
+- Could be a document, image, video, or program
+
+- A file has a name and an extension. 
+
+## File Extensions
+
+- File extensions help identify the file type and associated programs.
+
+- File extensions are suffixes following a file name (`.txt`, `.jpg`, `.py`, `.ipynb`, `.pdf`, etc.)
+
+- Metadata: size, type, modified date, etc. 
+
+- Softwares can only open and edit particular file types that they are designed for. e.g. Microsoft Excel won't be able to open your `.ipynb` files.
+
+- Try opening an image file (`.png`,`.jpg`, etc.) with any text editor (e.g. Notepad, TextEdit, etc.)
+
+## Folder (also called directory)
+
+- Container to store files and subfolders
+
+- Hierarchical structure
+
+- Why do I need folders? *Why can't I have everything in my `Downloads` folder?*
+
+    - Organization: Folders help keep files organized and easy to find.
+    - Clutter: Without folders, the `Downloads` folder would become cluttered and chaotic.
+    - Context: Folders provide context for the files within them (e.g., work projects, personal files).
+    - Navigation: Folders make it easier to navigate and locate files on your computer.
+
+- **Do folders need extensions?**
+
+- Please follow the mini module: https://teachbooks.io/files-and-folders
+
+# Computer Languages 
+
+Way to communicate instructions to a computer
+
+## Why need computer languages?
+
+- Computers only understand binary (0s and 1s)
+
+- Languages translate human ideas into machine-readable commands.
+
+- Examples: Python, Java, C, HTML.
+
+## Machine Code:
+
+- Pure 0s and 1s, directly executed by CPU.
+
+- Extremely fast, but almost impossible for humans to read/write.
+
+- Example: To write `39` you would write `100111`.
+
+## Assembly Language:
+
+- Low-level symbolic language, one step above machine code.
+
+- Uses short mnemonics instead of raw binary (e.g., MOV, ADD).
+
+- Needs an assembler to convert to machine code.
+
+## High-Level Languages:
+
+- Python, Java, C, JavaScript.
+
+- Easier to read/write, closer to human language.
+
+- Need compiler or interpreter to run.
+
+## Low-level (LL) v/s High-level (HL) languages
+
+- LL are closer to machine code, while HL are closer to human language.
+- HL are generally easier to learn and use, making them more accessible for beginners, but ...
+- ... HL will not offer the same level of performance and efficiency as LL
+- LL are great for system programming, embedded systems, and performance-critical applications.
+
+- Note: Not a binary separation, but rather a spectrum of abstraction levels. For example, Python (highest), C (middle), and Assembly Language (lowest).
+
+## Why have so many programming languages?
+
+- Tools in a toolbox: hammer ≠ screwdriver; each solves a different problem.
+- Different languages for different goals:
+
+    - Performance-critical tasks → C, C++
+
+    - Web development → JavaScript, HTML/CSS
+
+    - Data analysis/science → Python, R
+
+    - Mobile apps → Java/Kotlin (Android), Swift (iOS)
+
+- Trade-offs:
+
+    - Ease of use vs execution speed
+
+    - Flexibility vs strict rules
+
+
+## Print `Hello world!` in Assembly
+
+```{bash}
+section .data
+	hello:     db 'Hello world!',10    ; 'Hello world!' plus a linefeed character
+	helloLen:  equ $-hello             ; Length of the 'Hello world!' string
+
+section .text
+	global _start
+
+_start:
+	mov eax,4            ; The system call for write (sys_write)
+	mov ebx,1            ; File descriptor 1 - standard output
+	mov ecx,hello        ; Put the offset of hello in ecx
+	mov edx,helloLen     ; helloLen is a constant, so we don't need to say
+	                     ;  mov edx,[helloLen] to get it's actual value
+	int 80h              ; Call the kernel
+	mov eax,1            ; The system call for exit (sys_exit)
+	mov ebx,0            ; Exit with return code of 0 (no error)
+	int 80h;
+```
+
+## Print `Hello world!` in C and Python
+
+### C
+
+```c
+#include <stdio.h>
+
+int main() {
+    printf("Hello world!\n");
+    return 0;
+}
+```
+
+### Python
+
+```python
+print("Hello world!")
+```
+
+# The Terminal
+
+From writing code to running code...
+
+## Graphical User Interfaces (GUIs)
+
+- Windows File Explorer or Mac Finder are Graphical User Interfaces (GUIs). 
+- GUIs allow users to interact with the computer using visual (graphical) elements like windows, icons, and buttons.
+- They make it easier for users to navigate the file system and manage files without needing to type commands.
+- But they can be limiting when you want more control over the system.
+
+## Opening files 
+
+- If you're in Windows File Explorer or Mac Finder, simply double clicking on a file will open it in the default application.
+- Like we discussed before, a file extension tells your computer which application to use to open it.
+
+
+- But what if we have files that contain code (i.e. scripts)? e.g. `.py` files.
+- Double-clicking scripts will open them for editing, not for executing them (or running them). 
+- Enter the terminal...
+
+## What is the terminal? 
+
+- Also called **command line interface (CLI)** - as opposed to GUI
+- A text-based interface for interacting with the computer / alternative to GUI (point and click)
+- Users type commands instead of using graphical buttons.
+- More details of why a terminal is needed is provided in the slides of the lecture "Python in a Terminal".
+
+## CLI v/s GUI
+
+| Feature           | GUI              | CLI                        |
+| ----------------- | ---------------- | -------------------------- |
+| Interaction       | Click/Drag/Point | Type commands              |
+| Ease for beginner | Usually easier   | Requires learning commands |
+| Flexibility       | Limited          | Very flexible              |
+| Automation        | Harder           | Easy with scripts          |
+
+# Exercises
+
+## File & Folder Practice
+
+- Using your computer's file explorer (GUI), in `Documents`, create a folder with your name and the course code as a suffix.
+
+- Inside it, create 2 text files with `.txt` extension. Rename one with a `.py` extension. *(For Windows users, you can create directly through File Explorer. For Mac users, do it via a text editor (e.g. TextEdit or VSCode), renaming can be done through Finder.)*
+
+- Copy the `hello.py` file that you created during the "Python in a Terminal" lecture and paste it in this folder.
+
+## File Types
+
+- Change the file with `.txt` extension to `.jpg` → try to open. What happens?
+
+## Terminal Navigation
+
+- Use `cd` to go into your folder.
+
+- List contents with `ls` (or `dir` on some Windows machines).
+
+## Run a Script
+
+- Use `python hello.py` to run your script from the terminal.
+
+- Go one level higher in the directory structure using `cd ..`
+
+- Now run the command `python hello.py` to run your script from the terminal. What happens? 
+
+- How can you fix this and get the script running again?
