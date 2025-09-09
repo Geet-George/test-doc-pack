@@ -210,6 +210,8 @@ gitGraph
 
 ## Setup Git
 
+::: {.nonincremental}
+
 1. Check if you have Git installed:
    - Open a terminal and run: `git --version`
    - If it shows a version number, Git is installed. If not, follow the steps below.
@@ -227,7 +229,11 @@ gitGraph
      ```   
    - Replace `"Your Name"` and `"your_email@example.com"` with your actual name and email address. Keep the double quotes.
 
+:::
+
 ## Setup Github
+
+::: {.nonincremental}
 
 4. Create a GitHub account if you don't have one. You can use your university email.
 
@@ -238,3 +244,5 @@ gitGraph
 ### NOTE!
 
 If `git` is not recognized as a command (e.g. in VS Code, Jupyter, etc.), you may need to restart your terminal or computer after installation. 
+
+:::
