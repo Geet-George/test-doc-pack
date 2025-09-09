@@ -1,0 +1,236 @@
+---
+title: "Version Control Systems"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+
+---
+
+# Problems Without Version Control
+
+You probably have faced the following issues, but think about such problems in a larger project with many collaborators.
+
+## The Problem of File Versions
+
+- `report.docx`
+- `report_final.docx`
+- `report_final2_reallyfinal.docx`
+- `report_final2_reallyfinal_v2.docx`
+- `report_final2_reallyfinal_v2_fixed.docx`
+
+::: {.fragment .fade-in}
+
+**Which one to use?** 🤔
+
+:::
+
+---
+
+## Naive Solutions
+
+- Save copies in different folders  
+- Email files to yourself  
+- Rename with dates:  
+  - `project_2025-09-09.docx`
+
+::: {.fragment .fade-in}
+
+**Easy to lose track and errors can creep in**
+
+:::
+
+---
+
+## Collaboration Problem
+
+- Person A edits the file  
+- Person B edits the same file  
+- A overwrites B’s changes  
+
+::: {.fragment .fade-in}
+
+**Whose version is correct?**
+
+:::
+
+---
+
+## Accidental Deletions
+
+- Mistakenly overwrite or delete a file  
+- Without backup → work is gone  
+
+::: {.fragment .fade-in}
+
+**We want a "time machine"!**
+
+:::
+---
+
+## Tracking Changes
+
+- Want to compare version 1 vs version 2  
+- See: who changed what, when, and why  
+- Plain files don’t remember this info
+
+---
+
+## Scaling Up: Software Projects
+
+- Hundreds of files (code, docs, configs)  
+- Many contributors  
+- Manual versioning impossible 🚫
+
+---
+
+## Real-time editing tools
+
+- Google Docs, Overleaf, etc.
+- Easy to overwrite changes, no track history usually
+- Not suitable for code projects
+
+## What We Want (Wish List)
+
+- Automatic version history  
+- Collaboration without overwriting  
+- Merge changes intelligently  
+- Track who–when–why  
+- Work offline, sync later
+
+---
+
+# Version Control Systems (VCS)
+
+Tool that records changes to files over time.
+
+Allows you to:  
+- Revert to previous versions  
+- Work together safely keeping track of changes  
+- Merge changes intelligently  
+
+---
+
+## Simple Example
+
+- Student edits a file → commit "Added intro"  
+- Later, another commit → "Fixed typo"  
+- **Both changes are saved with history**
+
+::: {.fragment .fade-in}
+
+```{mermaid}
+---
+config:
+  theme: base
+  commitLabelFontSize: '16px'
+---
+gitGraph
+   commit id: "Added intro"
+   commit id: "Fixed typo"
+```
+:::
+---
+
+## Branching Example
+
+- Main version = stable  
+- You come up with an idea for a new feature - create a branch
+- If good → merge back  
+- If bad → discard, main (original stable version) stays safe
+
+::: {.fragment .fade-in}
+```{mermaid}
+---
+config:
+  theme: base
+---
+gitGraph
+    commit id: "stable version"
+    branch new-feature
+    checkout new-feature
+    commit id: "Tried new feature"
+    commit id: "Improved new feature"
+    checkout main
+    merge new-feature id: "Merged changes"
+```
+::: 
+
+## Branches can also be abandoned
+
+::: {.fragment .fade-in}
+
+```{mermaid}
+gitGraph
+    checkout main
+    commit id: "stable version"
+    branch new-feature
+    checkout new-feature
+    commit id: "Tried new feature"
+    commit id: "Improved new feature"
+    branch risky-idea
+    checkout risky-idea
+    commit id: "Tried risky idea"
+    commit id: "Tried improved risky idea"
+    checkout main
+    merge new-feature id: "Merged changes"
+```
+
+::: 
+
+---
+
+## Extra Benefits (with remote repositories)
+
+- Access files from anywhere  
+- Backup (remote repositories)
+- See who contributed what  
+- Enables global collaboration (open source)
+
+---
+
+## The Most Popular VCS Today
+
+### Git
+
+- Created 2005 by Linus Torvalds  
+- Distributed: everyone has full history  
+- Industry standard  
+- Platforms: GitHub, GitLab, Bitbucket
+
+- We'll be using Git and GitHub in this course. 
+---
+
+# Exercise
+
+## Setup Git
+
+1. Check if you have Git installed:
+   - Open a terminal and run: `git --version`
+   - If it shows a version number, Git is installed. If not, follow the steps below.
+
+2. Install Git on your computer (if not already installed):
+   - Windows: [Git for Windows](https://git-scm.com/download/win)
+   - macOS: Use Homebrew: `brew install git`
+   - Linux: Use your package manager, e.g., `sudo apt-get install git`
+
+3. Set up Git (one-time configuration):
+   - Open a terminal and run:
+     ```
+     git config --global user.name "Your Name"
+     git config --global user.email "your_email@example.com"
+     ```   
+   - Replace `"Your Name"` and `"your_email@example.com"` with your actual name and email address. Keep the double quotes.
+
+## Setup Github
+
+4. Create a GitHub account if you don't have one. You can use your university email.
+
+5. Add your SSH key to GitHub for secure authentication:
+   - Follow the instructions here: [Generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) and then [add the SSH key to your GitHub account](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+
