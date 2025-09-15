@@ -1,0 +1,391 @@
+---
+title: "Introduction to Git (and GitHub)"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+
+---
+
+# Git Terms
+
+## What is a Repository?
+
+- A repository is basically a collection of all files in your project.  
+
+::: {.fragment .fade-in}
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+    A[Repository] --> B[file1.py]
+    A --> C[file2.py]
+    A --> D[file3.py]
+```
+:::
+
+- Only script files in repo; big data files are usually excluded because they are large and slow to track.  
+- Often simply called "repo".  
+- For this course, your project will be contained in a **single repository**.  
+
+---
+
+## Local vs Remote Repositories
+
+- A Git repository can be **local** or **remote**.  
+- **Local repository**: Stored on your machine.  
+    - Note: A repo visible on your machine doesn't necessarily mean it's local; you also see cloud-synced folders in your file explorer.  
+- **Remote repository**: Stored on a remote server (like GitHub, GitLab).  
+    - When sharing your project, you share the **remote repository**.
+
+::: {.fragment .fade-in}
+Local and remote in sync
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+    
+    subgraph Remote Repository
+        direction LR
+        C[file1.py]
+        D[file2.py]
+    end
+
+    subgraph Local Repository
+        direction LR
+        A[file1.py]
+        B[file2.py]
+    end
+
+```
+:::
+
+## Working Directory
+
+- The **working directory** is the folder where you make changes to the files (or the ***directory*** where you are ***working***).  
+- **Difference from the term "local repository"**:  
+  - Repository: Stores the history of your project (commits, changes).  
+  - Working directory: Where you make changes before committing.  
+- Git tracks changes **inside the working directory**.  
+
+## Staging Area
+
+- The **staging area** (also called the **index**) is an intermediate area between the working directory and the local repo.
+- The place where you can prepare, review, and modify changes before committing them to the local repository.
+- Think of it as a "waiting room" for changes.
+
+# Git Workflow
+
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    A[Working Directory] --> B[Staging Area]
+    B --> C[Local Repository]
+    C --> D[Remote Repository]
+```
+
+## The Git Trinity
+
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+    A[Working Directory] -. add .-> B[Staging Area]
+    B -. commit .-> C[Local Repository]
+    C -. push .-> D[Remote Repository]
+```
+
+- Typical Git workflow involves the following steps:
+  1. **Modify files** in your working directory.
+  2. **Stage changes**: Add the modified files to the staging area using `git add`.
+  3. **Commit changes**: Save the staged changes to your local repository with `git commit`.
+  4. **Push changes**: Upload the committed changes from your local repository to the remote repository using `git push`.
+
+## Example of workflow 
+
+Let's start with a state where all changes are committed, and local and remote are in sync
+
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+
+    subgraph Remote Repo
+        direction LR
+        C[file1.py]
+        D[file2.py]
+    end
+
+    subgraph "Local Repo (committed)"
+
+        direction LR
+        A[file1.py]
+        B[file2.py]
+    end
+
+    subgraph "Working Directory (current)"
+        direction LR
+
+        W[file1.py]
+        X["file2.py"]
+    end
+```
+
+
+## Making changes
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart TD
+
+    subgraph Remote Repo
+        direction LR
+        C[file1.py]
+        D["file2.py (old state)"]
+    end
+
+    subgraph "Local Repo (committed)"
+
+        direction LR
+        A[file1.py]
+        B["file2.py (old state)"]
+    end
+
+    subgraph "Working Directory (current)"
+        direction LR
+
+        W[file1.py]
+        X["file2.py (modified with changes)"]
+    end
+```
+
+## Added to staging area
+
+To add changes in `file2.py` to the staging area, we'll use the command:
+```bash
+git add file2.py
+```
+::: {.fragment .fade-in}
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  
+    subgraph Remote
+        direction LR
+        C[file1.py]
+        D["file2.py (old state)"]
+    end
+
+    subgraph Local
+        direction LR
+        A[file1.py]
+        B["file2.py (old state)"]
+    end
+
+    subgraph Staging
+        direction LR
+        S2["file2.py (modified with changes)"]
+    end
+
+    subgraph "Working Directory (current)"
+        direction LR
+
+        W[file1.py]
+        X["file2.py (modified with changes)"]
+    end
+
+    X -. add .-> S2
+    Staging ~~~ Local
+    Local ~~~ Remote
+    
+```
+:::
+
+::: {.fragment .fade-in}
+**Note:** Git only tracks files that have been added to the repository at least once. If you create a new file, tracking starts when you `git add <file>`. Till then, it is untracked.
+:::
+
+## Committing to local repo
+
+To commit changes in the staging area to the local repo, we'll use the command:
+```bash
+git commit -m "Descriptive message about changes"
+```
+::: {.fragment .fade-in}
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  
+    subgraph Remote
+        direction LR
+        C[file1.py]
+        D["file2.py (old state)"]
+    end
+
+    subgraph Local
+        direction LR
+        A[file1.py]
+        B["file2.py (modified with changes)"]
+    end
+
+    subgraph Staging
+        direction LR
+        S2["file2.py (modified with changes)"]
+    end
+
+    subgraph "Working Directory (current)"
+        direction LR
+
+        W[file1.py]
+        X["file2.py (modified with changes)"]
+    end
+
+    X -. add .-> S2
+    Staging -. commit .-> Local
+    Local ~~~ Remote
+    
+```
+:::
+
+## Communicate local changes to remote
+
+To push changes from the local repo to the remote repo, we'll use the command:
+```bash
+git push
+```
+::: {.fragment .fade-in}
+```{mermaid}
+%%| fig-width: 9.5
+%%{init: {"flowchart": {"htmlLabels": false}} }%%
+flowchart LR
+  
+    subgraph Remote
+        direction LR
+        C[file1.py]
+        D["file2.py (old state)"]
+    end
+
+    subgraph Local
+        direction LR
+        A[file1.py]
+        B["file2.py (modified with changes)"]
+    end
+
+    subgraph Staging
+        direction LR
+        S2["file2.py (modified with changes)"]
+    end
+
+    subgraph "Working Directory (current)"
+        direction LR
+
+        W[file1.py]
+        X["file2.py (modified with changes)"]
+    end
+
+    X -. add .-> S2
+    Staging -. commit .-> Local
+    Local -. push .-> Remote
+    
+```
+:::
+
+::: {.fragment .fade-in}
+Note that the first time you push to a remote repo, you will need to specify the remote name (usually `origin`) and branch name (usually `main`):
+```bash
+git push origin main
+```
+:::
+
+## Keep in mind...
+
+- The `add` also has an "unstage" option (`git restore --staged <file>`), but `commit` and `push` have no "undo" option.
+
+- Any step from `commit` onwards is very difficult to undo and is generally considered bad practice to do so. Hence, the term "commit"... The clue is in the name!
+
+- You can selectively `add` (stage) files... 
+- ... but a `commit` is all-or-nothing (you commit everything in the staging area).
+- Similarly, a `push` is all-or-nothing (you push all commits that haven't been pushed yet).
+
+## Some more helpful commands...
+
+- `git status`: This command shows the current state of the working directory and the staging area. 
+    - Lets you see which changes have been staged, which haven't, and which files aren't being tracked by Git.
+
+- `git log`: This command shows the commit history for the repository.
+    - You can see the commit IDs, author information, dates, and commit messages.
+
+- `git diff`: This command shows the differences between the working directory and the staging area, or between the staging area and the last commit.
+    - Useful for reviewing changes before staging or committing.
+
+# Hands-on Practice
+
+All `git` commands are to be run in the terminal (command line) where you have `git` working. 
+
+Check if `git` is installed by running:
+```bash
+git --version
+```
+
+If not working, finish Exercises from the lecture last week on Version Control Systems.
+
+
+## Create a local git repo
+
+- Create a new directory on your local machine for a new project. 
+- Call it `<your_student_number>-sands-python` (e.g., `1234567-sands-python`).
+- Initialize a Git repository in this directory using `git init`.
+- Use `git status` to check the status of your repository.
+
+## Make changes to your working directory
+- Create a new Python file named `hello.py` in this directory with the following content:
+```python
+print("Hello!")
+```
+- Stage the new file using `git add hello.py`.
+- Check the status again using `git status` to see that `hello.py` is now staged for commit.
+- Commit your staged changes to your local repository with the commit message "initial commit" (using `git commit -m "initial commit"`). 
+- Check the status again using `git status` to confirm that there are no changes to commit.
+
+## Link to a remote repository on GitHub
+- Create a new repository on GitHub named `<your_student_number>-sands-python` (e.g., `1234567-sands-python`). Note: Create an empty repository on GitHub (without a README, .gitignore, or license).
+- Link your local repository to the remote repository on GitHub using the command:
+```bash
+git remote add origin <repository_url>
+```
+- Push your local commits to the remote repository on GitHub using `git push -u origin main`.
+- Verify that your `hello.py` file is now available in your GitHub repository.
+
+## Make further changes
+
+- Modify the `hello.py` file to change the message to:
+```python
+print("Hello, Signals and Systems with Python!")
+```
+- Stage the changes using `git add hello.py`.
+- Commit the changes with an appropriate commit message using `git commit`.
+- Push the changes to the remote repository using `git push`.   
+
+::: {.fragment .fade-in}
+Voilà! Look at you go, using Git and GitHub like a pro! 🎉
+:::
+
+# Exercises
+
+1. Create a new file named `signals.py` in your local repository. (the same repo as the one you created during the hands-on practice)
+2. Add a function named `generate_sine_wave(frequency, duration, sample_rate)` that generates a sine wave signal.
+3. Stage and commit the new file with an appropriate commit message.
+4. Create another file named `run.py` that imports the `generate_sine_wave` function and uses it to generate a sine wave with a frequency of 5 Hz, duration of 2 seconds, and sample rate of 100 samples per second. Have it print the first 10 samples of the generated sine wave.
+5. Stage and commit the `run.py` file with an appropriate commit message.
+6. Edit `run.py` to plot the generated sine wave using `matplotlib` instead of printing the samples.
+7. Stage and commit the changes to `run.py` with an appropriate commit message.
+8. Push all your commits to the remote repository on GitHub.
+9. Verify that all your files and changes are reflected in your GitHub repository. 
