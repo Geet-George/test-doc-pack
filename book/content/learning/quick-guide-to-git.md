@@ -52,27 +52,25 @@ git config --global user.email <your-email-id>
 
 Replace `<your-name>` and `<your-email-id>` with your name and email address. This information will be used to identify you in the commit history. If you don't do this, Git will prompt you to do this when you try to commit changes.
 
-### Useful Git commands
+### Setting up your machine to work with Github
 
-For now, we will only pick up a few basic commands to get started with things. As the course progresses, we will go into the details of what these commands do in the background.
+**1. Create a Github account:**
 
-#### 1. `git clone`
+Create a Github account if you don't have one already. You can do this by going to [Github](https://github.com/). You may use your university email address to sign up.
 
-`git clone` creates a local copy of an existing project stored in a remote Git repository (like Gitlab or Github). Here Local refers to things stored on your computer, and remote refers to some server. `git clone` is the first step when collaborating on an existing project. For example:
+**2. Set up SSH keys:**
 
-```bash
-git clone git@github.com:<your-Github-user-name>/<your-repository-name>.git
-```
+This Github account will host your repositories (projects) online. To access your account, you will need to log in. You can do this using your username and password, but this is not very secure. A better way is to use SSH keys. SSH keys are a pair of cryptographic keys that are used to authenticate you to the server without having to log in with a username and password every time. So, let's set up SSH keys on your machine.
 
-This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. 
+For this, we have to do an authentication the first time and then, every time after that, Github knows your machine. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but a short summary of the commands you need to perform is shown below.
 
-The above example is only possible with an SSH key which identifies you to the server without having to log in. For this, you have to do an authentication the first time and every time after that, Github knows your machine. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but a short summary of the commands you need to perform is shown below.
-
-To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
+To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool / Git Bash as shown below.
 
 ```bash
 ssh-keygen -t ed25519 -C "your-email@example.com"
 ```
+
+**3. Copy the public key**
 
 Next, you need to copy your public key (the file should have the extension “.pub”) over to your Github account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents as follows:
 
@@ -96,9 +94,28 @@ cat /Users/<YOUR_USERNAME>/.ssh/id_ed25519.pub
 ````
 `````
 
-Copy the complete line of output that starts with “ssh-ed25519” and ends with your email address. Finally, go to `Github -> Your profile -> Settings -> SSH and GPG Keys -> New SSH key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name, then click the `Add SSH key` button.
+The output of the above command is your public key. It should look something like this:
 
-Alternatively, you can clone the Github repository with HTTP:
+```ssh-ed25519 AAAAC3NzaC1lZDI1NTE5...rest-of-the-key... your-email@example.com```
+
+Copy the complete line of output that starts with “ssh-ed25519” and ends with your email address. 
+
+**4. Add the public key to your Github account**
+
+Finally, go to `Github -> Your profile -> Settings -> SSH and GPG Keys -> New SSH key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name in the `Title` box above, then click the `Add SSH key` button.
+
+**5. Test your SSH connection**
+
+Check if everything is working by running the following command in your terminal / command prompt:
+
+```bash
+ssh -T git@github.com
+```
+
+You might see a warning the first time you do this, asking if you want to continue connecting. Type `yes` and hit enter. If everything is working, you should see a message like this:
+
+```Hi <your-Github-user-name>! You've successfully authenticated, but GitHub does not provide shell access.```
+
 
 ```bash
 git clone https://github.com/<your-Github-user-name>/<your-repository-name>.git
