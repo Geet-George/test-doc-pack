@@ -116,38 +116,71 @@ You might see a warning the first time you do this, asking if you want to contin
 
 ```Hi <your-Github-user-name>! You've successfully authenticated, but GitHub does not provide shell access.```
 
+### Troubleshooting
+
+Following are some common issues I saw students face when setting up Git and Github for the first time. If you face any of these issues, try the suggested solutions. If you still have issues, please contact the course instructor or the TAs for help.
+
+**1. Asked for password when pushing to Github**
+
+If you are being asked for a password when you try to push to your repository, then you are probably using the HTTPS URL instead of the SSH URL. Make sure you use the SSH URL when cloning a repository. The SSH URL looks like this: `git@github.com:<your-Github-user-name>/<your-repository-name>.git` whereas the HTTPS URL looks like this: `https://github.com/<your-Github-user-name>/<your-repository-name>.git`. First, ensure you have added your SSH key to your Github account as described above in the [setting up](#setting-up-your-machine-to-work-with-github) section.
+
+You can check if you have the HTTPS URL by running the following command in your terminal / command prompt:
 
 ```bash
-git clone https://github.com/<your-Github-user-name>/<your-repository-name>.git
+git remote -v
 ```
 
-But then you will have to log in and provide credentials for each communication with the remote server
-
-#### 2. `git status`
-
-Having cloned a repository to local and navigated to that repository, `git status` shows you the current state of your project. It tells you which files have been changed, which are ready to be saved (staged), and which still need to be added. It’s a useful command to keep track of what’s going on before you make any further changes. For example, after cloning a repository, we navigate towards it using `cd` (change directory) and then we check the status
+If you see the HTTPS URL (i.e. something starting with `https://`), then you need to change it to the SSH URL. You can do this by running the following command (do not keep the angle brackets):
 
 ```bash
-cd <your-repo-name>
-git status
+git remote set-url origin git@github.com:<your-Github-user-name>/<your-repository-name>.git
 ```
 
-or add `-v` for a more verbose status
+Check again using `git remote -v` to see if the URL has been changed to the SSH URL. Now, try pushing again.
+
+The first time you push, you will be asked to confirm the authenticity of the host. Type `yes` and hit enter. You should only have to do this once. Next time onwards, you should be able to push without being asked for a password.
+
+**2. Error: `failed to push some refs`**
+
+If you see an error message like:
 
 ```bash
-cd <your-repo-name>
-git status -v
+error: failed to push some refs to 'https://github.com/<something>.git'
 ```
 
-Assuming we have made not edits to any of the cloned files, then this command will return 
+it could be because you entered the `git push -u origin main` command as provided in the slides. The reason it might not be working is that your local branch is not named `main`. It could be named `master` or something else. You can check the name of your current branch by running the following command:
 
 ```bash
-no changes added to commit (use "git add" and/or "git commit -a")
+git branch
 ```
 
-Once you start editting or adding new files to the directory, changed files can conveniently be listed using `git status`
+If you see something like this:
 
-#### 3. `git add`
+```bash
+* master
+```
+
+then your branch is named `master`. In that case, you need to run the following command instead:
+
+```bash
+git push -u origin master
+``` 
+
+Now try pushing again.
+
+**3. Error: `Permission denied (publickey)`**
+
+If you see an error message like this:
+
+```bash
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+it means that your SSH key is not being used for authentication. This could be because you have not added your SSH key to your Github account as described above in the [setting up](#setting-up-your-machine-to-work-with-github) section. Make sure you have done that.
+
+**Any other issues... Please contact the course instructor or the TAs for help.**
+
 
 `git add` prepares changes you’ve made (like editing files or adding new ones) to be saved. It moves the changes into a "staging area" before they are fully saved. You use this to tell Git which changes you want to include in the next snapshot of the project. For example, in we create a new file named `empty_file.txt`, then we can use:
 
