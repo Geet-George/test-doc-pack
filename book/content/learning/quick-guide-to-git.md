@@ -52,27 +52,25 @@ git config --global user.email <your-email-id>
 
 Replace `<your-name>` and `<your-email-id>` with your name and email address. This information will be used to identify you in the commit history. If you don't do this, Git will prompt you to do this when you try to commit changes.
 
-### Useful Git commands
+### Setting up your machine to work with Github
 
-For now, we will only pick up a few basic commands to get started with things. As the course progresses, we will go into the details of what these commands do in the background.
+**1. Create a Github account:**
 
-#### 1. `git clone`
+Create a Github account if you don't have one already. You can do this by going to [Github](https://github.com/). You may use your university email address to sign up.
 
-`git clone` creates a local copy of an existing project stored in a remote Git repository (like Gitlab or Github). Here Local refers to things stored on your computer, and remote refers to some server. `git clone` is the first step when collaborating on an existing project. For example:
+**2. Set up SSH keys:**
 
-```bash
-git clone git@github.com:<your-Github-user-name>/<your-repository-name>.git
-```
+This Github account will host your repositories (projects) online. To access your account, you will need to log in. You can do this using your username and password, but this is not very secure. A better way is to use SSH keys. SSH keys are a pair of cryptographic keys that are used to authenticate you to the server without having to log in with a username and password every time. So, let's set up SSH keys on your machine.
 
-This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. 
+For this, we have to do an authentication the first time and then, every time after that, Github knows your machine. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but a short summary of the commands you need to perform is shown below.
 
-The above example is only possible with an SSH key which identifies you to the server without having to log in. For this, you have to do an authentication the first time and every time after that, Github knows your machine. GitHub provides full documentation and guides on how to [generate an SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent), but a short summary of the commands you need to perform is shown below.
-
-To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool/GitBash as shown below.
+To generate an SSH key pair, you will need to run the ssh-keygen command from your command line tool / Git Bash as shown below.
 
 ```bash
 ssh-keygen -t ed25519 -C "your-email@example.com"
 ```
+
+**3. Copy the public key**
 
 Next, you need to copy your public key (the file should have the extension “.pub”) over to your Github account. The `ssh-keygen` command above will let you know where your public key is saved, and you can get its contents as follows:
 
@@ -96,41 +94,98 @@ cat /Users/<YOUR_USERNAME>/.ssh/id_ed25519.pub
 ````
 `````
 
-Copy the complete line of output that starts with “ssh-ed25519” and ends with your email address. Finally, go to `Github -> Your profile -> Settings -> SSH and GPG Keys -> New SSH key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name, then click the `Add SSH key` button.
+The output of the above command is your public key. It should look something like this:
 
-Alternatively, you can clone the Github repository with HTTP:
+```ssh-ed25519 AAAAC3NzaC1lZDI1NTE5...rest-of-the-key... your-email@example.com```
 
-```bash
-git clone https://github.com/<your-Github-user-name>/<your-repository-name>.git
-```
+Copy the complete line of output that starts with “ssh-ed25519” and ends with your email address. 
 
-But then you will have to log in and provide credentials for each communication with the remote server
+**4. Add the public key to your Github account**
 
-#### 2. `git status`
+Finally, go to `Github -> Your profile -> Settings -> SSH and GPG Keys -> New SSH key` page to add a new SSH public key. Paste the public key from your clipboard into the box labelled `Key` (making sure it does not contain any line breaks), give your key a name in the `Title` box above, then click the `Add SSH key` button.
 
-Having cloned a repository to local and navigated to that repository, `git status` shows you the current state of your project. It tells you which files have been changed, which are ready to be saved (staged), and which still need to be added. It’s a useful command to keep track of what’s going on before you make any further changes. For example, after cloning a repository, we navigate towards it using `cd` (change directory) and then we check the status
+**5. Test your SSH connection**
 
-```bash
-cd <your-repo-name>
-git status
-```
-
-or add `-v` for a more verbose status
+Check if everything is working by running the following command in your terminal / command prompt:
 
 ```bash
-cd <your-repo-name>
-git status -v
+ssh -T git@github.com
 ```
 
-Assuming we have made not edits to any of the cloned files, then this command will return 
+You might see a warning the first time you do this, asking if you want to continue connecting. Type `yes` and hit enter. If everything is working, you should see a message like this:
+
+```Hi <your-Github-user-name>! You've successfully authenticated, but GitHub does not provide shell access.```
+
+### Troubleshooting
+
+Following are some common issues I saw students face when setting up Git and Github for the first time. If you face any of these issues, try the suggested solutions. If you still have issues, please contact the course instructor or the TAs for help.
+
+**1. Asked for password when pushing to Github**
+
+If you are being asked for a password when you try to push to your repository, then you are probably using the HTTPS URL instead of the SSH URL. Make sure you use the SSH URL when cloning a repository. The SSH URL looks like this: `git@github.com:<your-Github-user-name>/<your-repository-name>.git` whereas the HTTPS URL looks like this: `https://github.com/<your-Github-user-name>/<your-repository-name>.git`. First, ensure you have added your SSH key to your Github account as described above in the [setting up](#setting-up-your-machine-to-work-with-github) section.
+
+You can check if you have the HTTPS URL by running the following command in your terminal / command prompt:
 
 ```bash
-no changes added to commit (use "git add" and/or "git commit -a")
+git remote -v
 ```
 
-Once you start editting or adding new files to the directory, changed files can conveniently be listed using `git status`
+If you see the HTTPS URL (i.e. something starting with `https://`), then you need to change it to the SSH URL. You can do this by running the following command (do not keep the angle brackets):
 
-#### 3. `git add`
+```bash
+git remote set-url origin git@github.com:<your-Github-user-name>/<your-repository-name>.git
+```
+
+Check again using `git remote -v` to see if the URL has been changed to the SSH URL. Now, try pushing again.
+
+The first time you push, you will be asked to confirm the authenticity of the host. Type `yes` and hit enter. You should only have to do this once. Next time onwards, you should be able to push without being asked for a password.
+
+**2. Error: `failed to push some refs`**
+
+If you see an error message like:
+
+```bash
+error: failed to push some refs to 'https://github.com/<something>.git'
+```
+
+it could be because you entered the `git push -u origin main` command as provided in the slides. The reason it might not be working is that your local branch is not named `main`. It could be named `master` or something else. You can check the name of your current branch by running the following command:
+
+```bash
+git branch
+```
+
+If you see something like this:
+
+```bash
+* master
+```
+
+then your branch is named `master`. In that case, you need to run the following command instead:
+
+```bash
+git push -u origin master
+``` 
+
+Now try pushing again.
+
+**3. Error: `Permission denied (publickey)`**
+
+If you see an error message like this:
+
+```bash
+Permission denied (publickey).
+fatal: Could not read from remote repository.
+```
+
+it means that your SSH key is not being used for authentication. This could be because you have not added your SSH key to your Github account as described above in the [setting up](#setting-up-your-machine-to-work-with-github) section. Make sure you have done that.
+
+**Any other issues... Please contact the course instructor or the TAs for help.**
+
+### Useful Git commands
+
+For now, we will only pick up a few basic commands to get started with things. As the course progresses, we will go into the details of what these commands do in the background.
+
+#### 1. `git add`
 
 `git add` prepares changes you’ve made (like editing files or adding new ones) to be saved. It moves the changes into a "staging area" before they are fully saved. You use this to tell Git which changes you want to include in the next snapshot of the project. For example, in we create a new file named `empty_file.txt`, then we can use:
 
@@ -140,7 +195,7 @@ git add empty_file.txt
 
 To tell Git that this file should be staged and included in the next commit.
 
-#### 4. `git commit`
+#### 2. `git commit`
 
 `git commit` saves the changes that were staged with git add into the project's history. It creates a permanent record of these changes identifiable with a unique ID. Each commit has a message (written by you) to describe what was changed, making it easy to track progress over time. For instance, having created `empty_file.txt` and added it to the staging area, we now commit it to keep a record of the current version.
 
@@ -150,7 +205,7 @@ git commit -m "added empty_file.txt to be tracked by this repository"
 
 the `-m` allows us to add the commit message directly
 
-#### 5. `git push`
+#### 3. `git push`
 
 `git push` sends the commits you’ve made on your local computer to a remote repository (Gitlab, GitHub etc.) so others can see or collaborate on your work. Think of it as uploading your changes to the cloud, where the whole team can access the latest version. Now that we have created a new file, added and committed it to the repository, we can push it to the remote server using.
 
@@ -158,7 +213,33 @@ the `-m` allows us to add the commit message directly
 git push
 ```
 
-If you were exclusively on local (your own computer) and don't make changes remote, then a git workflow will mostly consist of a sequence of `git add`, `git commit` and `git push`. If you work with others or work on multiple devices, then you might want to check if changes have been made to the remote repository that were not included during the original cloning of this remote repository to local. 
+#### 4. `git status`
+
+Having cloned a repository to local and navigated to that repository, `git status` shows you the current state of your project. It tells you which files have been changed, which are ready to be saved (staged), and which still need to be added. It’s a useful command to keep track of what’s going on before you make any further changes. For example, after cloning a repository, we navigate towards it using `cd` (change directory) and then we check the status
+
+```bash
+cd <your-repo-name>
+git status
+```
+
+or include `-v` for a more verbose status
+
+```bash
+cd <your-repo-name>
+git status -v
+```
+
+Once you start editting or adding new files to the directory, changed files can conveniently be listed using `git status`
+
+#### 5. `git clone`
+
+`git clone` creates a local copy of an existing project stored in a remote Git repository (like Gitlab or Github). Here Local refers to things stored on your computer, and remote refers to some server. `git clone` is the first step when collaborating on an existing project. For example:
+
+```bash
+git clone git@github.com:<your-Github-user-name>/<your-repository-name>.git
+```
+
+This clones the Github directory `<your-repository-name>` in whatever folder you use this command. For example, if you opened the terminal in your Documents folder, it will create a new folder with `<your-repository-name>` there and copy the contents of the repository into that folder. 
 
 #### 6. `git fetch`
 
@@ -177,4 +258,4 @@ git status
 git pull
 ```
 
-Sometimes a file will have changed both remotely and locally. This can create conflicts when pulling remote into local. Resolving these merge conflicts will be a topic for another day.
+Sometimes a file will have changed both remotely and locally. This can create conflicts when pulling remote into local. Resolving these merge conflicts is a topic for another day.
