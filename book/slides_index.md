@@ -7,3 +7,4 @@
 |3|08.09.2025 15:45| <a href="slides/computers_are_not_magic.html">Computers aren't Magic</a>  |
 |4|09.09.2025 10:45| <a href="slides/version_control_systems.html">Version Control Systems</a>  |
 |5|15.09.2025 15:45| <a href="slides/git_intro.html">Introduction to Git (and GitHub)</a>  |
+|6|22.09.2025 15:45| <a href="slides/your_project.html">Your Project</a>  |
