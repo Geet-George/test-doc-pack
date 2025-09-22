@@ -1,0 +1,74 @@
+---
+title: "Your Project"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+jupyter: python3
+---
+
+# Project Details
+
+## Your project
+
+- Github repository
+    - Named in the format `<your_student_number>-sands-python` (don't keep the angle brackets)
+    - Add me and the TAs as collaborators (Github usernames: `Geet-George`, `owenodriscoll`, `yustisiardhitasari` and `khaakman`)
+
+
+## What does your project include?
+
+- .py files for all your code (you can have multiple files if you want)
+- No Jupyter notebooks (i.e. no .ipynb files)
+- A `README.md` file
+
+## Theory behind your code
+
+- Your project should contain functions that:
+    1. Generate signals (e.g. sinusoidal, square, triangular, sawtooth, unit step, unit impulse)
+    2. Perform operations on signals and plot them (e.g. time shifting, time scaling, addition, multiplication)
+    3. ***(optional)*** Compute and plot the Fourier series and Fourier transform of signals
+
+## Implementation Details
+
+- Using version control (i.e. git)
+- Testing your code
+- Documenting your code
+- Packaging your code
+
+## How to go about it?
+
+- You've already started with git, created a repository and pushed your code to Github
+- Continue in the same way, i.e. make changes to your code, commit and push
+- In future classes, we will learn about testing, documenting and packaging your code
+
+## Submission
+
+- There is no "submission" per se. The state of your repository at the deadlines will be considered your submission.
+- Mid-Term deadline: **Friday, 3rd October 2025, 23:59**
+- Final deadline: **Friday, 7th November 2025, 23:59**
+
+## Grading
+
+The project will be evaluated based on the following criteria:
+
+1. Project in a Github repository (make sure the teaching team invited)
+2. Functions: Proper syntax and appropriate implementation
+3. Commit history: Regular commits
+4. README: Concept and method implemented by your code
+5. Docstrings: Each function has an appropriate docstring
+6. Tests for functions
+7. Running pytest to check test success for project
+8. Contains pyproject.toml file (with appropriate metadata and build section)
+
+- First 4 criteria: Mid-term evaluation
+- All criteria: Final evaluation
+
+
+
+
+
