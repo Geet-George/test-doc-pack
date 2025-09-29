@@ -1023,10 +1023,31 @@ Geet George
 <section id="what-does-your-project-include" class="slide level2 center">
 <h2>What does your project include?</h2>
 <ul>
-<li class="fragment">.py files for all your code (you can have multiple files if you want)</li>
+<li class="fragment">.py files for all your code (you can have multiple files if you want) - for functions, scripts, tests, etc.</li>
 <li class="fragment">No Jupyter notebooks (i.e. no .ipynb files)</li>
 <li class="fragment">A <code>README.md</code> file</li>
+<li class="fragment">pyproject.toml file (not mandatory for mid-term, but required for final submission)</li>
 </ul>
+</section>
+<section id="structure-of-your-project" class="slide level2 center">
+<h2>Structure of your project</h2>
+<ul>
+<li class="fragment">A .py file with functions*</li>
+<li class="fragment">Another .py file that imports aforementioned functions and calls them (executes them) with relevant arguments and plots the signal, modified signal and saves it.</li>
+<li class="fragment">Maybe yet another .py file for tests (not mandatory for mid-term, but required for final submission) - you can also include tests in the same file as the functions</li>
+<li class="fragment">README and TOML files</li>
+</ul>
+<div class="fragment fade-in smaller">
+<p>*functions - at least 2 functions that generate signals (e.g. sinusoidal, step, etc.) + 2 functions (e.g. time-shifting, time-scaling, both, etc.)</p>
+</div>
+<div class="fragment fade-in">
+<p>Example structure of your repository:</p>
+<pre><code>/&lt;your_student_number&gt;-sands-python
+    ├── signals.py (or helper.py)
+    ├── script.py (or run.py)
+    └── README.md
+    └── pyproject.toml</code></pre>
+</div>
 </section>
 <section id="theory-behind-your-code" class="slide level2 center">
 <h2>Theory behind your code</h2>
@@ -1037,7 +1058,6 @@ Geet George
 <li class="fragment">Perform operations on signals and plot them (e.g. time shifting, time scaling, addition, multiplication)</li>
 <li class="fragment"><strong><em>(optional)</em></strong> Compute and plot the Fourier series and Fourier transform of signals</li>
 </ol></li>
-<li class="fragment">Example:</li>
 </ul>
 </section>
 <section id="implementation-details" class="slide level2 center">

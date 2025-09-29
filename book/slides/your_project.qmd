@@ -22,9 +22,32 @@ jupyter: python3
 
 ## What does your project include?
 
-- .py files for all your code (you can have multiple files if you want)
+- .py files for all your code (you can have multiple files if you want) - for functions, scripts, tests, etc.
 - No Jupyter notebooks (i.e. no .ipynb files)
 - A `README.md` file
+- pyproject.toml file (not mandatory for mid-term, but required for final submission)
+
+## Structure of your project
+
+- A .py file with functions*
+- Another .py file that imports aforementioned functions and calls them (executes them) with relevant arguments and plots the signal, modified signal and saves it. 
+- Maybe yet another .py file for tests (not mandatory for mid-term, but required for final submission) - you can also include tests in the same file as the functions
+- README and TOML files
+
+::: {.fragment .fade-in .smaller}
+*functions - at least 2 functions that generate signals (e.g. sinusoidal, step, etc.) + 2 functions (e.g. time-shifting, time-scaling, both, etc.)
+:::
+
+::: {.fragment .fade-in}
+Example structure of your repository:
+```
+/<your_student_number>-sands-python
+    ├── signals.py (or helper.py)
+    ├── script.py (or run.py)
+    └── README.md
+    └── pyproject.toml
+```
+:::
 
 ## Theory behind your code
 
