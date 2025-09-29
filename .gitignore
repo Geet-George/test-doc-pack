@@ -1,3 +1,6 @@
+# Files not visible to students
+grading/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
