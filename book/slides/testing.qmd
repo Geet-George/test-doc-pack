@@ -1,0 +1,231 @@
+---
+title: "Testing your code"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+execute: 
+  echo: true
+  error: true
+jupyter: python3
+---
+
+# Testing in Python
+
+
+- Tests verify that your code **does what you think it does**.
+- They help you:
+  - Catch bugs early  
+  - Refactor safely  
+  - Collaborate with confidence  
+- Think of tests as **a safety net** for your codebase.
+
+## Example function
+
+Let’s define a simple function that creates a sine wave.
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+def generate_sine_wave(frequency, amplitude, duration, sample_rate=1000):
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    y = amplitude * np.sin(2 * np.pi * frequency * t)
+    return t, y
+
+# Example usage
+t, y = generate_sine_wave(1, 2, 1)  # 1 Hz, amplitude 2, 1 second long
+print(t[:5], y[:5])  # Print first 5 samples
+```
+
+# Testing with `if` — (❌)
+
+We could, in theory, test our function using `if` statements.
+
+::: {.fragment}
+```{python}
+#| output-location: fragment
+t, y = generate_sine_wave(1, 2, 1)  # 1 Hz, amplitude 2, 1 second long
+if len(t) == 1000:
+    print("Test passed ✅")
+else:
+    print("Test failed ❌")
+```
+:::
+
+## Another Test
+
+Let’s check the first value of `y`.
+
+```{python}
+#| output-location: fragment
+t, y = generate_sine_wave(1, 2, 1)
+if y[0] == 0:
+    print("Test passed ✅")
+else:
+    print("Test failed ❌")
+```
+
+## Testing Amplitude
+
+```{python}
+#| output-location: fragment
+_, y = generate_sine_wave(5, 3, 1)
+if np.isclose(max(y), 3, atol=1e-6):
+    print("Test passed ✅")
+else:
+    print("Test failed ❌")
+```
+
+::: {.fragment}
+✅ Works fine.
+
+But this gets repetitive fast...
+:::
+
+
+## Testing with `if` works, but…
+
+- It’s **verbose**
+- You must **read** each message
+- It doesn’t **stop automatically** when something breaks
+
+::: {.fragment .fade-in}
+👉 There’s a better way.
+:::
+
+# Testing with `assert` — (✅)
+
+## Using `assert`
+
+Let’s rewrite those tests using `assert`.
+
+```{python}
+#| output-location: fragment
+t, y = generate_sine_wave(1, 2, 1)
+assert len(t) == 1000
+
+t, y = generate_sine_wave(1, 2, 1)
+assert y[0] == 0
+
+_, y = generate_sine_wave(5, 3, 1)
+assert np.isclose(max(y), 3, atol=1e-6)
+```
+
+::: {.fragment .fade-in}
+### What Happens?
+
+- ✅ If all assertions are **true**, nothing happens.
+- ❌ If one is **false**, you get an `AssertionError`.
+- No print statements needed!
+:::
+
+## Break the function on purpose:
+
+```{python}
+#| output-location: fragment
+#| echo: true
+def generate_sine_wave(frequency, amplitude, duration, sample_rate=1000):
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    y = np.sin(2 * np.pi * frequency * t)  # Forgot amplitude!
+    return t, y
+
+t, y = generate_sine_wave(1, 2, 1)
+assert len(t) == 1000
+
+t, y = generate_sine_wave(1, 2, 1)
+assert y[0] == 0
+
+_, y = generate_sine_wave(5, 3, 1)
+assert np.isclose(max(y), 3, atol=1e-6)
+```
+
+
+
+## Why `assert` Is Better
+
+- Minimal boilerplate
+- Immediate feedback
+- Scales easily for multiple tests
+- Works great with frameworks like `pytest`
+
+
+
+## Edge Cases Matter
+
+Good tests include **normal cases** and **edge cases**.
+
+#### Edge Case: Negative Duration
+```{python}
+#| output-location: slide
+
+def generate_sine_wave(frequency, amplitude, duration, sample_rate=1000):
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    y = amplitude * np.sin(2 * np.pi * frequency * t)
+    return t, y
+
+t, y = generate_sine_wave(1, 2, -1)  # duration = -1
+assert len(t) == 0
+assert len(y) == 0
+```
+
+## Fixing Edge Cases
+
+Let’s make the function handle negative durations.
+
+::: {.fragment .fade-in}
+```{python}
+#| output-location: fragment
+def generate_sine_wave(frequency, amplitude, duration, sample_rate=1000):
+    if duration < 0:
+        return np.array([]), np.array([])
+    t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
+    y = amplitude * np.sin(2 * np.pi * frequency * t)
+    return t, y
+
+t, y = generate_sine_wave(1, 2, -1)  # duration = -1
+assert len(t) == 0
+assert len(y) == 0
+```
+:::
+::: {.fragment .fade-in}
+✅ Now all tests pass.
+:::
+
+## Another Edge Case
+
+What if amplitude is 0?
+
+```{python}
+#| output-location: fragment
+t, y = generate_sine_wave(5, 0, 1)
+assert np.allclose(y, 0)
+```
+
+::: {.fragment .fade-in}
+✅ Works fine — sine wave is just flat zero.
+:::
+
+## Test-Driven Development (TDD)
+
+**TDD mindset:**
+
+1. Write the test first.  
+2. Run it (it fails).  
+3. Write the code to make it pass.  
+4. Refactor if needed.
+
+::: {.fragment .fade-in}
+What you just did in the previous couple of slides was TDD without realizing it! 🎉
+:::
+
+## Why TDD Helps
+
+- Forces you to define **expected behavior** first  
+- Encourages **modular design**  
+- Reduces debugging time  
+- Builds **confidence** in your code
