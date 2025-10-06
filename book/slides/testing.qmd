@@ -229,3 +229,144 @@ What you just did in the previous couple of slides was TDD without realizing it!
 - Encourages **modular design**  
 - Reduces debugging time  
 - Builds **confidence** in your code
+
+## Simple checklist for writing tests
+
+1. Call the function (that you want to test) with known inputs.
+2. Use `assert` statements to check outputs against expected results.
+3. Cover **normal cases** and **edge cases**.
+4. Keep tests **independent** of each other, i.e. call the function afresh in each test.
+5. Try using descriptive names for test functions.
+
+# Using `pytest`
+
+First, let’s make a function that contains all our tests.
+
+```{python}
+#| output-location: fragment
+def test_generate_sine_wave():
+    t, y = generate_sine_wave(1, 2, 1)
+    assert len(t) == 1000
+    assert y[0] == 0
+
+    t, y = generate_sine_wave(5, 3, 1)
+    assert np.isclose(max(y), 3, atol=1e-6)
+
+    t, y = generate_sine_wave(1, 2, -1)
+    assert len(t) == 0 and len(y) == 0
+
+    t, y = generate_sine_wave(5, 0, 1)
+    assert np.allclose(y, 0)
+```
+
+## Run It Manually
+
+Call the test function in your Python file:
+
+```{python}
+test_generate_sine_wave()
+```
+
+And run the Python file. If nothing happens, all tests passed.
+
+::: {.fragment .fade-in}
+✅ All tests pass.  
+But what if we have dozens of functions?  (maybe spread across multiple files?)
+We need **automation**.
+:::
+
+::: {.fragment .fade-in}
+👉 Enter `pytest`.
+:::
+
+## Installing `pytest`
+
+In your terminal:
+
+```bash
+pip install pytest
+```
+
+
+## Running `pytest`
+
+::: {.fragment .fade-in}
+Add your `test_generate_sine_wave` function to a file named `test_my_function.py`.
+:::
+::: {.fragment .fade-in}
+Then run:
+
+```bash
+pytest test_my_function.py
+```
+:::
+
+
+## `pytest` Output Example
+
+```bash
+============================= test session starts ==============================
+collected 1 item
+
+test_my_function.py .                                               [100%]
+============================== 1 passed in 0.05s ===============================
+```
+
+`.` = test passed ✅ 
+
+`F` = test failed ❌
+
+## Seeing a Failure
+
+Let’s add a broken test to the same file see what happens. The time-step is wrong on purpose.
+
+```{python}
+#| output-location: fragment
+def test_we_want_to_see_a_fail():
+    t, y = generate_sine_wave(1, 2, 1)
+    assert len(t) == 999 
+```
+
+## Seeing a Failure
+
+Run again with `pytest`. You’ll see an `F` and details about the failure.
+
+```bash
+=========================================================== test session starts ============================================================
+platform darwin -- Python 3.10.13, pytest-8.3.3, pluggy-1.5.0
+rootdir: /Users/geetgeorge/Documents/Work/Teaching/AESB2122-Signals_and_Systems_with_Python/2025-26_Q1/123456-sands-python
+plugins: anyio-4.7.0
+collected 2 items                                                                                                                          
+
+functions.py .F                                                                                                                      [100%]
+
+================================================================= FAILURES =================================================================
+________________________________________________________ test_we_want_to_see_a_fail ________________________________________________________
+
+    def test_we_want_to_see_a_fail():
+        t, y = generate_sine_wave(1, 2, 1)
+>       assert len(t) == 999
+E       assert 1000 == 999
+E        +  where 1000 = len(array([0.   , 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008,\n       0.009, 0.01 , 0.011, 0.012, 0.013, 0.014,...0.985, 0.986, 0.987, 0.988, 0.989,\n       0.99 , 0.991, 0.992, 0.993, 0.994, 0.995, 0.996, 0.997, 0.998,\n       0.999]))
+
+functions.py:29: AssertionError
+========================================================= short test summary info ==========================================================
+FAILED functions.py::test_we_want_to_see_a_fail - assert 1000 == 999
+======================================================= 1 failed, 1 passed in 0.17s ========================================================
+```
+
+## Reading the Output
+
+`pytest` tells you:
+- Which test failed  
+- The exact line and values  
+- A summary of all passed/failed tests
+
+This makes debugging incredibly fast.
+
+## What should I do now?
+
+- Start small, but always test.
+- Use assertions early and often.
+- Automate with `pytest`.
+- Test your code like you’ll **never see it again** — because future-you won’t remember what it did! 😄

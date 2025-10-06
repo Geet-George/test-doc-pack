@@ -1069,20 +1069,9 @@ Geet George
 <li class="fragment"><a href="#/testing-in-python" id="/toc-testing-in-python">Testing in Python</a></li>
 <li class="fragment"><a href="#/testing-with-if" id="/toc-testing-with-if">Testing with <code>if</code> — (❌)</a></li>
 <li class="fragment"><a href="#/testing-with-assert" id="/toc-testing-with-assert">Testing with <code>assert</code> — (✅)</a></li>
+<li class="fragment"><a href="#/using-pytest" id="/toc-using-pytest">Using <code>pytest</code></a></li>
 </ul>
 </nav>
-</section>
-<section class="slide level2 center">
-
-<!-- # Agenda
-
-1. Why testing matters  
-2. Testing with `if` (❌)
-3. Testing with `assert` (✅)
-4. Handling edge cases
-5. Test-Driven Development (TDD)
-6. Using `pytest`
-7. Wrap-up & best practices -->
 </section>
 <section>
 <section id="testing-in-python" class="title-slide slide level1 center">
@@ -1104,7 +1093,7 @@ Geet George
 <section id="example-function" class="slide level2 center">
 <h2>Example function</h2>
 <p>Let’s define a simple function that creates a sine wave.</p>
-<div id="3c88aed1" class="cell" data-execution_count="2">
+<div id="2d5d7022" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href></a></span>
 <span id="cb1-3"><a href></a><span class="kw">def</span> generate_sine_wave(frequency, amplitude, duration, sample_rate<span class="op">=</span><span class="dv">1000</span>):</span>
@@ -1127,7 +1116,7 @@ Geet George
 <h1>Testing with <code>if</code> — (❌)</h1>
 <p>We could, in theory, test our function using <code>if</code> statements.</p>
 <div class="fragment">
-<div id="73015830" class="cell" data-execution_count="3">
+<div id="7e24a6a6" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href></a>t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)  <span class="co"># 1 Hz, amplitude 2, 1 second long</span></span>
 <span id="cb3-2"><a href></a><span class="cf">if</span> <span class="bu">len</span>(t) <span class="op">==</span> <span class="dv">1000</span>:</span>
 <span id="cb3-3"><a href></a>    <span class="bu">print</span>(<span class="st">&quot;Test passed ✅&quot;</span>)</span>
@@ -1144,7 +1133,7 @@ Geet George
 <section id="another-test" class="slide level2 center">
 <h2>Another Test</h2>
 <p>Let’s check the first value of <code>y</code>.</p>
-<div id="2b5f129c" class="cell" data-execution_count="4">
+<div id="6df47198" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href></a>t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb5-2"><a href></a><span class="cf">if</span> y[<span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb5-3"><a href></a>    <span class="bu">print</span>(<span class="st">&quot;Test passed ✅&quot;</span>)</span>
@@ -1159,7 +1148,7 @@ Geet George
 </section>
 <section id="testing-amplitude" class="slide level2 center">
 <h2>Testing Amplitude</h2>
-<div id="2f58a495" class="cell" data-execution_count="5">
+<div id="df6cf0aa" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href></a>_, y <span class="op">=</span> generate_sine_wave(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
 <span id="cb7-2"><a href></a><span class="cf">if</span> np.isclose(<span class="bu">max</span>(y), <span class="dv">3</span>, atol<span class="op">=</span><span class="fl">1e-6</span>):</span>
 <span id="cb7-3"><a href></a>    <span class="bu">print</span>(<span class="st">&quot;Test passed ✅&quot;</span>)</span>
@@ -1195,7 +1184,7 @@ Geet George
 <section id="using-assert" class="slide level2 center">
 <h2>Using <code>assert</code></h2>
 <p>Let’s rewrite those tests using <code>assert</code>.</p>
-<div id="bf5bb903" class="cell" data-execution_count="6">
+<div id="3ff9a2a3" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href></a>t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
 <span id="cb9-2"><a href></a><span class="cf">assert</span> <span class="bu">len</span>(t) <span class="op">==</span> <span class="dv">1000</span></span>
 <span id="cb9-3"><a href></a></span>
@@ -1219,7 +1208,7 @@ Geet George
 </section>
 <section id="break-the-function-on-purpose" class="slide level2 center">
 <h2>Break the function on purpose:</h2>
-<div id="813ef427" class="cell" data-execution_count="7">
+<div id="c47b0c83" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href></a><span class="kw">def</span> generate_sine_wave(frequency, amplitude, duration, sample_rate<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb10-2"><a href></a>    t <span class="op">=</span> np.linspace(<span class="dv">0</span>, duration, <span class="bu">int</span>(sample_rate <span class="op">*</span> duration), endpoint<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb10-3"><a href></a>    y <span class="op">=</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> frequency <span class="op">*</span> t)  <span class="co"># Forgot amplitude!</span></span>
@@ -1239,7 +1228,7 @@ Geet George
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">AssertionError</span>                            Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[15], line 13</span>
+Cell <span class="ansi-green-fg">In[18], line 13</span>
 <span class="ansi-green-fg ansi-bold">     10</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> y[<span style="color:rgb(98,98,98)">0</span>] <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">0</span>
 <span class="ansi-green-fg ansi-bold">     12</span> _, y <span style="color:rgb(98,98,98)">=</span> generate_sine_wave(<span style="color:rgb(98,98,98)">5</span>, <span style="color:rgb(98,98,98)">3</span>, <span style="color:rgb(98,98,98)">1</span>)
 <span class="ansi-green-fg">---&gt; 13</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> np<span style="color:rgb(98,98,98)">.</span>isclose(<span style="color:rgb(0,135,0)">max</span>(y), <span style="color:rgb(98,98,98)">3</span>, atol<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1e-6</span>)
@@ -1262,7 +1251,7 @@ Cell <span class="ansi-green-fg">In[15], line 13</span>
 <h2>Edge Cases Matter</h2>
 <p>Good tests include <strong>normal cases</strong> and <strong>edge cases</strong>.</p>
 <h4 id="edge-case-negative-duration">Edge Case: Negative Duration</h4>
-<div id="c8c31d39" class="cell" data-execution_count="8">
+<div id="2de79f48" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href></a><span class="kw">def</span> generate_sine_wave(frequency, amplitude, duration, sample_rate<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb11-2"><a href></a>    t <span class="op">=</span> np.linspace(<span class="dv">0</span>, duration, <span class="bu">int</span>(sample_rate <span class="op">*</span> duration), endpoint<span class="op">=</span><span class="va">False</span>)</span>
 <span id="cb11-3"><a href></a>    y <span class="op">=</span> amplitude <span class="op">*</span> np.sin(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> frequency <span class="op">*</span> t)</span>
@@ -1279,14 +1268,14 @@ Cell <span class="ansi-green-fg">In[15], line 13</span>
 <div class="ansi-escaped-output">
 <pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[16], line 6</span>
+Cell <span class="ansi-green-fg">In[19], line 6</span>
 <span class="ansi-green-fg ansi-bold">      3</span>     y <span style="color:rgb(98,98,98)">=</span> amplitude <span style="color:rgb(98,98,98)">*</span> np<span style="color:rgb(98,98,98)">.</span>sin(<span style="color:rgb(98,98,98)">2</span> <span style="color:rgb(98,98,98)">*</span> np<span style="color:rgb(98,98,98)">.</span>pi <span style="color:rgb(98,98,98)">*</span> frequency <span style="color:rgb(98,98,98)">*</span> t)
 <span class="ansi-green-fg ansi-bold">      4</span>     <span style="font-weight:bold;color:rgb(0,135,0)">return</span> t, y
 <span class="ansi-green-fg">----&gt; 6</span> t, y <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">generate_sine_wave</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">2</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">-</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">1</span><span class="ansi-yellow-bg">)</span>  <span style="font-style:italic;color:rgb(95,135,135)"># duration = -1</span>
 <span class="ansi-green-fg ansi-bold">      7</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> <span style="color:rgb(0,135,0)">len</span>(t) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">0</span>
 <span class="ansi-green-fg ansi-bold">      8</span> <span style="font-weight:bold;color:rgb(0,135,0)">assert</span> <span style="color:rgb(0,135,0)">len</span>(y) <span style="color:rgb(98,98,98)">==</span> <span style="color:rgb(98,98,98)">0</span>
 
-Cell <span class="ansi-green-fg">In[16], line 2</span>, in <span class="ansi-cyan-fg">generate_sine_wave</span><span class="ansi-blue-fg">(frequency, amplitude, duration, sample_rate)</span>
+Cell <span class="ansi-green-fg">In[19], line 2</span>, in <span class="ansi-cyan-fg">generate_sine_wave</span><span class="ansi-blue-fg">(frequency, amplitude, duration, sample_rate)</span>
 <span class="ansi-green-fg ansi-bold">      1</span> <span style="font-weight:bold;color:rgb(0,135,0)">def</span> <span style="color:rgb(0,0,255)">generate_sine_wave</span>(frequency, amplitude, duration, sample_rate<span style="color:rgb(98,98,98)">=</span><span style="color:rgb(98,98,98)">1000</span>):
 <span class="ansi-green-fg">----&gt; 2</span>     t <span style="color:rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">np</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">linspace</span><span class="ansi-yellow-bg">(</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">0</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">duration</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(0,135,0)" class="ansi-yellow-bg">int</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">sample_rate</span><span class="ansi-yellow-bg"> </span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">duration</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">endpoint</span><span style="color:rgb(98,98,98)" class="ansi-yellow-bg">=</span><span style="font-weight:bold;color:rgb(0,135,0)" class="ansi-yellow-bg">False</span><span class="ansi-yellow-bg">)</span>
 <span class="ansi-green-fg ansi-bold">      3</span>     y <span style="color:rgb(98,98,98)">=</span> amplitude <span style="color:rgb(98,98,98)">*</span> np<span style="color:rgb(98,98,98)">.</span>sin(<span style="color:rgb(98,98,98)">2</span> <span style="color:rgb(98,98,98)">*</span> np<span style="color:rgb(98,98,98)">.</span>pi <span style="color:rgb(98,98,98)">*</span> frequency <span style="color:rgb(98,98,98)">*</span> t)
@@ -1308,7 +1297,7 @@ File <span class="ansi-green-fg">~/miniforge3/envs/test-doc-pack_env/lib/python3
 <h2>Fixing Edge Cases</h2>
 <p>Let’s make the function handle negative durations.</p>
 <div class="fragment fade-in">
-<div id="8c2636e2" class="cell" data-execution_count="9">
+<div id="3a55c1ee" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href></a><span class="kw">def</span> generate_sine_wave(frequency, amplitude, duration, sample_rate<span class="op">=</span><span class="dv">1000</span>):</span>
 <span id="cb12-2"><a href></a>    <span class="cf">if</span> duration <span class="op">&lt;</span> <span class="dv">0</span>:</span>
 <span id="cb12-3"><a href></a>        <span class="cf">return</span> np.array([]), np.array([])</span>
@@ -1331,7 +1320,7 @@ File <span class="ansi-green-fg">~/miniforge3/envs/test-doc-pack_env/lib/python3
 <section id="another-edge-case" class="slide level2 center">
 <h2>Another Edge Case</h2>
 <p>What if amplitude is 0?</p>
-<div id="1dd9f96a" class="cell" data-execution_count="10">
+<div id="b80f141f" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href></a>t, y <span class="op">=</span> generate_sine_wave(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
 <span id="cb13-2"><a href></a><span class="cf">assert</span> np.allclose(y, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -1368,6 +1357,132 @@ File <span class="ansi-green-fg">~/miniforge3/envs/test-doc-pack_env/lib/python3
 <li class="fragment">Reduces debugging time<br>
 </li>
 <li class="fragment">Builds <strong>confidence</strong> in your code</li>
+</ul>
+</section>
+<section id="simple-checklist-for-writing-tests" class="slide level2 center">
+<h2>Simple checklist for writing tests</h2>
+<ol type="1">
+<li class="fragment">Call the function (that you want to test) with known inputs.</li>
+<li class="fragment">Use <code>assert</code> statements to check outputs against expected results.</li>
+<li class="fragment">Cover <strong>normal cases</strong> and <strong>edge cases</strong>.</li>
+<li class="fragment">Keep tests <strong>independent</strong> of each other, i.e. call the function afresh in each test.</li>
+<li class="fragment">Try using descriptive names for test functions.</li>
+</ol>
+</section></section>
+<section>
+<section id="using-pytest" class="title-slide slide level1 center">
+<h1>Using <code>pytest</code></h1>
+<p>First, let’s make a function that contains all our tests.</p>
+<div id="f0e940ee" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href></a><span class="kw">def</span> test_generate_sine_wave():</span>
+<span id="cb14-2"><a href></a>    t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb14-3"><a href></a>    <span class="cf">assert</span> <span class="bu">len</span>(t) <span class="op">==</span> <span class="dv">1000</span></span>
+<span id="cb14-4"><a href></a>    <span class="cf">assert</span> y[<span class="dv">0</span>] <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb14-5"><a href></a></span>
+<span id="cb14-6"><a href></a>    t, y <span class="op">=</span> generate_sine_wave(<span class="dv">5</span>, <span class="dv">3</span>, <span class="dv">1</span>)</span>
+<span id="cb14-7"><a href></a>    <span class="cf">assert</span> np.isclose(<span class="bu">max</span>(y), <span class="dv">3</span>, atol<span class="op">=</span><span class="fl">1e-6</span>)</span>
+<span id="cb14-8"><a href></a></span>
+<span id="cb14-9"><a href></a>    t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="op">-</span><span class="dv">1</span>)</span>
+<span id="cb14-10"><a href></a>    <span class="cf">assert</span> <span class="bu">len</span>(t) <span class="op">==</span> <span class="dv">0</span> <span class="kw">and</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span></span>
+<span id="cb14-11"><a href></a></span>
+<span id="cb14-12"><a href></a>    t, y <span class="op">=</span> generate_sine_wave(<span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>)</span>
+<span id="cb14-13"><a href></a>    <span class="cf">assert</span> np.allclose(y, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="11">
+
+</div>
+</section>
+<section id="run-it-manually" class="slide level2 center">
+<h2>Run It Manually</h2>
+<p>Call the test function in your Python file:</p>
+<div id="96345208" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href></a>test_generate_sine_wave()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And run the Python file. If nothing happens, all tests passed.</p>
+<div class="fragment fade-in">
+<p>✅ All tests pass.<br>
+But what if we have dozens of functions? (maybe spread across multiple files?) We need <strong>automation</strong>.</p>
+</div>
+<div class="fragment fade-in">
+<p>👉 Enter <code>pytest</code>.</p>
+</div>
+</section>
+<section id="installing-pytest" class="slide level2 center">
+<h2>Installing <code>pytest</code></h2>
+<p>In your terminal:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href></a><span class="ex">pip</span> install pytest</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="running-pytest" class="slide level2 center">
+<h2>Running <code>pytest</code></h2>
+<div class="fragment fade-in">
+<p>Add your <code>test_generate_sine_wave</code> function to a file named <code>test_my_function.py</code>.</p>
+</div>
+<div class="fragment fade-in">
+<p>Then run:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href></a><span class="ex">pytest</span> test_my_function.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="pytest-output-example" class="slide level2 center">
+<h2><code>pytest</code> Output Example</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href></a><span class="ex">=============================</span> test session starts ==============================</span>
+<span id="cb18-2"><a href></a><span class="ex">collected</span> 1 item</span>
+<span id="cb18-3"><a href></a></span>
+<span id="cb18-4"><a href></a><span class="ex">test_my_function.py</span> .                                               <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
+<span id="cb18-5"><a href></a><span class="ex">==============================</span> 1 passed in 0.05s ===============================</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>.</code> = test passed ✅</p>
+<p><code>F</code> = test failed ❌</p>
+</section>
+<section id="seeing-a-failure" class="slide level2 center">
+<h2>Seeing a Failure</h2>
+<p>Let’s add a broken test to the same file see what happens. The time-step is wrong on purpose.</p>
+<div id="06faeecd" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href></a><span class="kw">def</span> test_we_want_to_see_a_fail():</span>
+<span id="cb19-2"><a href></a>    t, y <span class="op">=</span> generate_sine_wave(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">1</span>)</span>
+<span id="cb19-3"><a href></a>    <span class="cf">assert</span> <span class="bu">len</span>(t) <span class="op">==</span> <span class="dv">999</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="13">
+
+</div>
+</section>
+<section id="seeing-a-failure-1" class="slide level2 center">
+<h2>Seeing a Failure</h2>
+<p>Run again with <code>pytest</code>. You’ll see an <code>F</code> and details about the failure.</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href></a><span class="ex">===========================================================</span> test session starts ============================================================</span>
+<span id="cb20-2"><a href></a><span class="ex">platform</span> darwin <span class="at">--</span> Python 3.10.13, pytest-8.3.3, pluggy-1.5.0</span>
+<span id="cb20-3"><a href></a><span class="ex">rootdir:</span> /Users/geetgeorge/Documents/Work/Teaching/AESB2122-Signals_and_Systems_with_Python/2025-26_Q1/123456-sands-python</span>
+<span id="cb20-4"><a href></a><span class="ex">plugins:</span> anyio-4.7.0</span>
+<span id="cb20-5"><a href></a><span class="ex">collected</span> 2 items                                                                                                                          </span>
+<span id="cb20-6"><a href></a></span>
+<span id="cb20-7"><a href></a><span class="ex">functions.py</span> .F                                                                                                                      <span class="pp">[</span><span class="ss">100%</span><span class="pp">]</span></span>
+<span id="cb20-8"><a href></a></span>
+<span id="cb20-9"><a href></a><span class="ex">=================================================================</span> FAILURES =================================================================</span>
+<span id="cb20-10"><a href></a><span class="ex">________________________________________________________</span> test_we_want_to_see_a_fail ________________________________________________________</span>
+<span id="cb20-11"><a href></a></span>
+<span id="cb20-12"><a href></a>    <span class="ex">def</span> test_we_want_to_see_a_fail<span class="er">(</span><span class="kw">)</span><span class="bu">:</span></span>
+<span id="cb20-13"><a href></a>        <span class="ex">t,</span> y = generate_sine_wave<span class="er">(</span><span class="ex">1,</span> 2, 1<span class="kw">)</span></span>
+<span id="cb20-14"><a href></a><span class="op">&gt;</span>       assert <span class="ex">len</span><span class="er">(</span><span class="ex">t</span><span class="kw">)</span> <span class="ex">==</span> 999</span>
+<span id="cb20-15"><a href></a><span class="ex">E</span>       assert 1000 == 999</span>
+<span id="cb20-16"><a href></a><span class="ex">E</span>        +  where 1000 = len<span class="er">(</span><span class="ex">array</span><span class="er">(</span><span class="ex">[0.</span>   , 0.001, 0.002, 0.003, 0.004, 0.005, 0.006, 0.007, 0.008,<span class="dt">\n</span>       0.009, 0.01 , 0.011, 0.012, 0.013, 0.014,...0.985, 0.986, 0.987, 0.988, 0.989,<span class="dt">\n</span>       0.99 , 0.991, 0.992, 0.993, 0.994, 0.995, 0.996, 0.997, 0.998,<span class="dt">\n</span>       0.999]<span class="kw">))</span></span>
+<span id="cb20-17"><a href></a></span>
+<span id="cb20-18"><a href></a><span class="ex">functions.py:29:</span> AssertionError</span>
+<span id="cb20-19"><a href></a><span class="ex">=========================================================</span> short test summary info ==========================================================</span>
+<span id="cb20-20"><a href></a><span class="ex">FAILED</span> functions.py::test_we_want_to_see_a_fail <span class="at">-</span> assert 1000 == 999</span>
+<span id="cb20-21"><a href></a><span class="ex">=======================================================</span> 1 failed, 1 passed in 0.17s ========================================================</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="reading-the-output" class="slide level2 center">
+<h2>Reading the Output</h2>
+<p><code>pytest</code> tells you: - Which test failed<br>
+- The exact line and values<br>
+- A summary of all passed/failed tests</p>
+<p>This makes debugging incredibly fast.</p>
+</section>
+<section id="what-should-i-do-now" class="slide level2 center">
+<h2>What should I do now?</h2>
+<ul>
+<li class="fragment">Start small, but always test.</li>
+<li class="fragment">Use assertions early and often.</li>
+<li class="fragment">Automate with <code>pytest</code>.</li>
+<li class="fragment">Test your code like you’ll <strong>never see it again</strong> — because future-you won’t remember what it did! 😄</li>
 </ul>
 
 </section></section>
