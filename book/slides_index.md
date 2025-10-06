@@ -9,3 +9,4 @@
 |5|15.09.2025 15:45| <a href="slides/git_intro.html">Introduction to Git (and GitHub)</a>  |
 |6|22.09.2025 15:45| <a href="slides/your_project.html">Your Project</a>  |
 |7|23.09.2025 15:45| <a href="slides/docstrings.html">Documenting your Code with Docstrings</a>  |
+|9|06.10.2025 15:45| <a href="slides/testing.html">Testing your Code</a>  |
