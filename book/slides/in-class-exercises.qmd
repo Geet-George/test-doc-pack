@@ -1,0 +1,46 @@
+---
+title: "In-class exercises"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+toc: false
+execute: 
+  echo: true
+  error: true
+jupyter: python3
+---
+
+# In-class Exercises
+
+These exercises, along with, teaching you good practices of programming, will also help you prepare for your the final project. :)
+
+In previous classes, we have learned about how to get these exercises done. Refer to those slides if you need a refresher.
+
+## Docstrings
+
+1. Have docstrings in all your functions. 
+
+2. Start with a one-liner that describes what the function does.
+
+3. Add details about the parameters and return values.
+
+## Testing your code
+
+1. Write test functions for your functions.
+
+2. Add your test functions to a separate test file and name it something that starts with `test_`, e.g. `test_functions.py`.
+
+3. Run the test file with `pytest` to see how things work.
+
+## TOML file
+
+1. Create a new file in your project.
+
+2. Name it `pyproject.toml`. (exactly this name! no changes.)
+
+- For now, just create the file. We'll learn to appreciate this file in a later class.
