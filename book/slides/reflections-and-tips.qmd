@@ -1,0 +1,145 @@
+---
+title: "Reflections & tips"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+execute: 
+  echo: true
+  error: true
+jupyter: python3
+---
+
+# Executing Python
+
+## Running a Python command
+
+- Let's say I ask you to run a python command `print("Hello World")`. How do you do it?
+- You can run it in:
+    - Python shell
+    - Jupyter notebook
+    - Python script
+
+- You are familiar with Jupyter notebooks already, let's look at the other two.
+
+## What's a Python shell?
+
+- A Python shell is an interactive environment where you can type and execute Python commands one at a time.
+- You can start a Python shell by typing `python` or `python3` in your terminal or command prompt.
+- You'll see a prompt that looks something like this: `>>>`
+- Go ahead and write out `print("Hello World")` in the shell and hit enter.
+- You should see `Hello World` printed out immediately.
+
+## Why have Python scripts if we have a Python shell?
+
+- With a Python shell, you can only run one command at a time.
+- With a Python script, you can write multiple lines of code and save them in a file with a `.py` extension, say `my_script.py`.
+- You can then run the entire script at once by typing `python my_script.py` in your terminal or command prompt.
+- This is useful for writing longer programs or automating tasks or for letting your other scripts use your code.
+
+# Functions
+
+- A function is simply a block of reusable code that performs a specific task. 
+- You use a function by defining it once and then calling it whenever you need it.
+
+## Defining and calling a function
+
+- What's the difference between defining a function and calling a function?
+    - Defining a function creates the function
+    - Calling a function executes your defined function
+
+- The code that is inside the function only runs when you call the function, not when you define it.
+
+::: {.fragment}
+```{python}
+def greet(name):
+    print(f"Hello, {name}!")
+```
+If you run the above code, nothing will happen because we have only defined the function `greet`.
+:::
+
+- To actually see the greeting, we need to call the function like this:
+
+::: {.fragment}
+```{python}
+greet("Elliot")
+greet("E. T.")
+```
+:::
+
+## Return values
+
+- When you define a function, the `return` statement is used to give the output of the function.
+- When you call the function, you can capture the returned value in a variable.
+
+::: {.fragment}
+```{python}
+def add(a, b):
+    return a + b
+```
+:::
+
+
+- So, if you want to capture the output of the `add` function, you can do it like this:
+
+::: {.fragment}
+```{python}
+result = add(3, 5)
+print(result)
+```
+:::
+
+## Multiple return values
+
+- What if you want multiple outputs from a function?
+
+::: {.fragment}
+```{python}
+def get_coordinates():
+    x = 10
+    y = 20
+    return x, y
+```
+:::
+
+- You can capture the multiple return values in separate variables like this:
+
+::: {.fragment}
+```{python}
+x_coord, y_coord = get_coordinates()
+print(x_coord, y_coord)
+```
+:::
+
+- We have examples of `t, y` outputs in previous slides. This is how that works.
+
+# Module imports
+
+## What happens when we import a module?
+
+- When you import a module, Python executes all the code in that module.
+- This means that any functions, classes, or variables defined in the module become available for use
+
+- Does this mean that all the functions defined in the module are called every time we import it?
+    - No, only the functions that are called in the module are executed. (remember the function definition vs function call discussion)
+
+## Code outside functions in a module (a bit advanced)
+
+- Let's say you need to call a function in a script, but you don't want the other code in the script to run when you import it.
+- You can use the `if __name__ == "__main__":` construct to achieve this.
+- This is a bit advanced, so we will not go into details now, but just know that it is possible to have code in a script that only runs when the script is executed directly, and not when it is imported as a module.
+
+## Example: importing numpy
+
+- So, what happens when you say `import numpy as np`? Why?
+    - All numpy functions, classes, and variables are defined and available for your use.
+    - No code is executed because:
+        - Either there is no code outside function definitions in numpy
+        - Or numpy uses the `if __name__ == "__main__":` construct to prevent code from running on import.
+        - The reality is a bit more complex, and is a mix of both.
+
+- Try importing your own scripts and see what happens with defined functions and code outside functions.
