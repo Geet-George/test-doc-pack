@@ -1,0 +1,180 @@
+---
+title: "The TOML file"
+subtitle: "AESB2122 - Signals and Systems with <span style='color:steelblue'>***Python***</span>"
+author: "Geet George"
+format:
+    revealjs:
+        smaller: true
+        incremental: true
+        mermaid:
+            theme: forest
+execute: 
+  echo: true
+  error: true
+jupyter: python3
+---
+
+# What is packaging?
+
+Packaging is the process of preparing your Python code so that others can easily install and use it.
+
+## Why package your code?
+
+- Share your code with others in a standardized way
+- The user doesn't have to bother about the internal structure of your code or where files are located
+- Let tools like `pip` install your code and its dependencies automatically
+- Make it easier to manage versions and updates of your code
+
+::: {.fragment}
+**How is Python packaging done?** or **How does `pip` know how to install my package?**
+:::
+
+# The `pyproject.toml` file
+
+## What is a TOML anyway?
+
+- It's a simple configuration file format
+- Provides settings and information in a structured and human-readable way
+- TOML stands for "Tom's Obvious, Minimal Language" (not important!)
+- Not just Python, others like Rust, Jekyll, Julia, Hugo, Blender, etc. also use TOML for configuration files
+
+## TOML for Python
+
+- In Python projects, we use a TOML file with a special name - `pyproject.toml`
+- This file tells Python tools (like `pip`) how to build and distribute your package
+- It contains metadata about your project: name, version, author, dependencies, etc.
+- Think of it as an instruction manual for your project!
+
+## The minimum you need
+
+Every Python package (nowadays) would have a `pyproject.toml` file. The absolute minimum you need is something like this:
+
+```toml
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+```
+
+- This tells Python how to build your project
+- `setuptools` is a tool that helps build and distribute Python packages
+- Don't worry too much about what all the terms here mean —- just know it's required!
+
+## Adding project metadata
+
+Now let's add information about your project:
+
+```toml
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-package"
+version = "0.1.0"
+description = "Generates signals, modifies them, and plots them"
+```
+
+The `[project]` section tells everyone what your project is called, what version it is, and what it does!
+
+## Adding authors and dependencies
+
+You can specify who created the project:
+
+```toml
+[project]
+name = "my-package"
+version = "0.1.0"
+description = "Generates signals, modifies them, and plots them"
+authors = [
+    {name = "Your Name", email = "you@example.com"}
+]
+dependencies = ["numpy", "pandas", "matplotlib"]
+```
+
+- `authors` is an array (a list) of objects. So, there can be multiple authors...
+
+- When someone installs your package, `pip` will automatically install these dependencies too! :)
+
+- You can also specify versions for your dependencies (e.g. `numpy>=1.20`)
+
+# Let's create your first pyproject.toml
+
+## Step 1: Create the file
+
+- Navigate to your project's root directory (the main folder of your project)
+- Create a new file named `pyproject.toml` (exactly this name!)
+- Open it in your text editor
+
+## Step 2: Add the build system
+
+Start with the minimum:
+
+```toml
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+```
+
+Copy this into your file and save it.
+
+## Step 3: Add project metadata
+
+Add information about your project:
+
+```toml
+[project]
+name = "give-a-sensible-name"
+version = "0.1.0"
+description = "Give an appropriate description of your project here!"
+authors = [
+    {name = "Your Name", email = "your.email@student.uni.nl"}
+]
+dependencies = ["what", "packages", "you-actually-use"]
+```
+
+Replace the placeholders with your actual information! For dependencies, only include packages that your code actually imports. If you're not sure what you need, you can always add more later!
+
+## Step 5: Save and verify
+
+Save your file as `pyproject.toml` in your project root. Your file structure should look like this:
+
+```
+my-awesome-project/
+├── pyproject.toml
+├── functions.py
+├── script.py
+└── plots/
+```
+
+That's it! You've created your first `pyproject.toml` file!
+
+## Don't forget the section headers!
+
+❌ Wrong:
+```toml
+name = "my-package"
+version = "0.1.0"
+```
+
+✅ Correct:
+```toml
+[project]
+name = "my-package"
+version = "0.1.0"
+```
+
+Without the section header, TOML doesn't know where to put the information!
+
+## The file name is sacred
+
+- It must be exactly `pyproject.toml`
+- Not `pyproject.txt`
+- Not `pyproject-toml`
+- Not `my_pyproject.toml`
+- Exactly. `pyproject.toml`.
+
+## You can always update it
+
+- Don't worry if you're not sure about all the details
+- Your `pyproject.toml` will grow as your project grows
+- Add more metadata, dependencies, or configuration later
