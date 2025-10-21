@@ -1225,22 +1225,6 @@ Hello, E. T.!</code></pre>
 <li class="fragment">You can use the <code>if __name__ == &quot;__main__&quot;:</code> construct to achieve this.</li>
 <li class="fragment">This is a bit advanced, so we will not go into details now, but just know that it is possible to have code in a script that only runs when the script is executed directly, and not when it is imported as a module.</li>
 </ul>
-</section>
-<section id="example-importing-numpy" class="slide level2 center">
-<h2>Example: importing numpy</h2>
-<ul>
-<li class="fragment">So, what happens when you say <code>import numpy as np</code>? Why?
-<ul>
-<li class="fragment">All numpy functions, classes, and variables are defined and available for your use.</li>
-<li class="fragment">No code is executed because:
-<ul>
-<li class="fragment">Either there is no code outside function definitions in numpy</li>
-<li class="fragment">Or numpy uses the <code>if __name__ == &quot;__main__&quot;:</code> construct to prevent code from running on import.</li>
-<li class="fragment">The reality is a bit more complex, and is a mix of both.</li>
-</ul></li>
-</ul></li>
-<li class="fragment">Try importing your own scripts and see what happens with defined functions and code outside functions.</li>
-</ul>
 
 </section></section>
     </div>
