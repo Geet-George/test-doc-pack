@@ -11,6 +11,5 @@
 |7|23.09.2025 15:45| <a href="slides/docstrings.html">Documenting your Code with Docstrings</a>  |
 |9|06.10.2025 15:45| <a href="slides/testing.html">Testing your Code</a>  |
 |10|13.10.2025 15:45| <a href="slides/in-class-exercises.html">In-class Exercises</a>  |
-
 |11|21.10.2025 13:45| <a href="slides/toml_file.html">The TOML file</a>  |
 |11|21.10.2025 13:45| <a href="slides/reflections-and-tips.html">Reflections and Tips</a>  |
