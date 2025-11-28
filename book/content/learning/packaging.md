@@ -1,16 +1,21 @@
 # 7. Packaging
 
-So, what’s the deal with packaging our project? We already have our code in a folder—can’t we just zip it up and send it to someone?
+So, what’s the deal with packaging our project? I already have all my code in a file — can’t I just email it to someone? Is packaging just a fancy way for developers to complicate things? We'll answer these as we pick up a few concepts here...
 
-Sure, you can do that! But packaging goes beyond simply zipping up your code. It’s about making your code easy to install and use for others. When you package your code, you create a distributable version that can be installed on other machines. Now, what’s this new term: ***distributable***?
+Having all your code in a Python file (`.py`) is nice, because you can simply import it as a module for other scripts. And indeed, you can simply share that file with others (via email, USB drives, Github gists, etc.). But it's not really a scalable option for sharing, because most projects will be a lot more complex as:
+(a) they'll have more than just a single file - multiple files and even multiple directories
+(b) they might depend on other libraries that are not Python-based and 
+(c) they could have specific needs in terms of the environment it has to run in (e.g. a specific version of Python or other packages).
 
-A distributable is a version of your code that’s ready for others to use. Think of it like a cake that only needs to be taken out of the box and served—no baking or frosting required. In this analogy, the baking and frosting represent the installation and setup that a user would have to handle if you just sent them a zipped folder. By packaging your code, you make it so that the user only needs to run a few simple commands, like pip install your-package.
+This is where "packaging" comes in. It is about making your code easy to install and use for others. When you package your code, you create a distributable version of it that can be installed on other machines. Now, what’s this new term: ***distributable***?
 
-## The `pyproject.toml` file
+A distributable is a version of your code that’s ready for others to use. Every computer will have it's own OS, it's own environments and related paths and variables. These are set to work with the computer's architecture. By packaging your code, you make it so that the user only needs to run a few simple commands, like pip install your-package and everything else is taken care of for them. This includes installing any dependencies your code needs to run, setting up the correct paths, and ensuring compatibility with the user's system.
 
 When you package your code, you create a distributable version known as a package. A package is a collection of Python files that can be easily installed using a package manager like `pip`. `pip` is the Python package manager that helps you install and manage Python packages.
 
-So, how does `pip` know what to do with your package? How does it know what to install and where? That’s where the `pyproject.toml` file comes in. The `pyproject.toml` is a file, which provides `pip` with all the necessary information about your project, such as your package name, version, dependencies, as well as instructions on how to build it. With this file, you ensure that your package is straightforward to install and use!
+## The `pyproject.toml` file
+
+So, how does `pip` know what to do with your package? How does it know what to install and where? That’s the role that a file called `pyproject.toml` plays. The `pyproject.toml` is a file, which provides `pip` with all the necessary information about your project, such as your package name, version, dependencies, as well as instructions on how to build it. With this file, you ensure that your package is straightforward to install and use!
 
 What does the `pyproject.toml` file look like? Here’s an example:
 
@@ -132,6 +137,8 @@ python -m build
 When you run this command, the terminal will print out a bunch of messages as it builds your package. If everything goes well, you should see a message that says something like `Successfully built my-package-0.1.0.tar.gz` and `Successfully built my-package-0.1.0-py3-none-any.whl`. This means that `pip` has successfully created a distributable version of your package.
 
 You'll see that `pip` has created a `dist` folder in your project directory. This folder contains the distributable versions of your package, namely a `.tar.gz` file and a `.whl` file. These are the distributable versions of your package. So, what are these files? The `.tar.gz` file is a source distribution of your package, which contains all the necessary files to build and install your package. The `.whl` file is a built distribution of your package, which is a binary distribution that can be installed on other machines. 
+
+![Source: Mahmoud Hashemi, "The Packaging Gradient", PyBay2017](https://packaging.python.org/en/latest/_images/py_pkg_tools_and_libs.png)
 
 For us, it doesn't matter which file we use, because `pip` can handle both types of distributions. That said, the `.whl` file is more efficient and faster to install, so it is the preferred distribution format. I highly recommend going through [this tutorial](https://realpython.com/python-wheels/) if you want to understand more about the differences between source and wheel distributions.
 
