@@ -3,9 +3,11 @@
 So, what’s the deal with packaging our project? I already have all my code in a file — can’t I just email it to someone? Is packaging just a fancy way for developers to complicate things? We'll answer these as we pick up a few concepts here...
 
 Having all your code in a Python file (`.py`) is nice, because you can simply import it as a module for other scripts. And indeed, you can simply share that file with others (via email, USB drives, Github gists, etc.). But it's not really a scalable option for sharing, because most projects will be a lot more complex as:
-(a) they'll have more than just a single file - multiple files and even multiple directories
-(b) they might depend on other libraries that are not Python-based and 
-(c) they could have specific needs in terms of the environment it has to run in (e.g. a specific version of Python or other packages).
+<ol type="a">
+<li> they'll have more than just a single file - multiple files and even multiple directories </li>
+<li> they might depend on other libraries that are not Python-based </li>
+<li> they could have specific needs in terms of the environment it has to run in (e.g. a specific version of Python or other packages) </li>
+</ol>
 
 This is where "packaging" comes in. It is about making your code easy to install and use for others. When you package your code, you create a distributable version of it that can be installed on other machines. Now, what’s this new term: ***distributable***?
 
