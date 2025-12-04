@@ -1,4 +1,4 @@
-# 7. Packaging
+# Packaging
 
 So, what’s the deal with packaging our project? I already have all my code in a file — can’t I just email it to someone? Is packaging just a fancy way for developers to complicate things? We'll answer these as we pick up a few concepts here...
 

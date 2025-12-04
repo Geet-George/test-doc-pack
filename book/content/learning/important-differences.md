@@ -1,4 +1,4 @@
-# 2. Important Differences
+# Important Differences
 
 ## 1. Git v/s Github
 
